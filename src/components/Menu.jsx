@@ -21,6 +21,7 @@ const Menu = () => {
   ];
 
   const handleCheckboxChange = (mealType, item) => {
+
     setSelectedItems((prevSelectedItems) => {
       const isSelected = prevSelectedItems.some(
         (selectedItem) =>
@@ -35,6 +36,7 @@ const Menu = () => {
         return [...prevSelectedItems, { ...item, mealType }];
       }
     });
+    // handleSelectedTotal();
   };
 
   const handleSelectButtonClicked = () => {
@@ -45,9 +47,13 @@ const Menu = () => {
 
   const handleRemoveSelected = (index) => {
     const newSelectedItems = [...selectedItems];
-    newSelectedItems.splice(index, 1);
-    setSelectedItems(newSelectedItems);
+    selectedItems.splice(index, 1);
+    setSelectedItems(selectedItems);
+    // setSelectedTotal(selectedTotal - selectedItems[i].price )
     handleSelectedTotal();
+    if (selectedItems.length === 0) {
+      setShowSelectedItems(false);
+    }
   };
 
   const handleSelectedTotal = () => {
@@ -149,7 +155,9 @@ const Menu = () => {
                       (selectedItem) =>
                         selectedItem.name === item.name && selectedItem.mealType === mealType
                     )}
-                    onChange={() => handleCheckboxChange(mealType, item)}
+
+
+                    onChange={() => {handleCheckboxChange(mealType, item); }}
                   />
 
                   <label htmlFor={`${mealType}-${index}`}>
