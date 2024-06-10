@@ -1,0 +1,209 @@
+import Menujson from './Menujson';
+import React, { useState, useEffect } from 'react';
+
+const Menu = () => {
+  const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [showSelectedItems, setShowSelectedItems] = useState(false);
+  const [selectedButtonText, setSelectedButtonText] = useState("Selected");
+  const [selectedTotal, setSelectedTotal] = useState(0);
+
+  const [mealTypeFilter, setMealTypeFilter] = useState("");
+  const [vegetarianFilter, setVegetarianFilter] = useState("");
+  const [glutenFreeFilter, setGlutenFreeFilter] = useState("");
+  const [countryOfOriginFilter, setCountryOfOriginFilter] = useState("");
+
+  // Extract unique countries from the menu items
+  const countries = [
+    ...new Set(
+      Object.values(Menujson.hotelMenu).flat().map((item) => item.countryOfOrigin)
+    ),
+  ];
+
+  const handleCheckboxChange = (mealType, item) => {
+    setSelectedItems((prevSelectedItems) => {
+      const isSelected = prevSelectedItems.some(
+        (selectedItem) =>
+          selectedItem.name === item.name && selectedItem.mealType === mealType
+      );
+      if (isSelected) {
+        return prevSelectedItems.filter(
+          (selectedItem) =>
+            !(selectedItem.name === item.name && selectedItem.mealType === mealType)
+        );
+      } else {
+        return [...prevSelectedItems, { ...item, mealType }];
+      }
+    });
+  };
+
+  const handleSelectButtonClicked = () => {
+    setShowSelectedItems(!showSelectedItems);
+    handleSelectedTotal();
+    setSelectedButtonText(selectedButtonText === "Selected" ? "Hide" : "Selected");
+  };
+
+  const handleRemoveSelected = (index) => {
+    const newSelectedItems = [...selectedItems];
+    newSelectedItems.splice(index, 1);
+    setSelectedItems(newSelectedItems);
+    handleSelectedTotal();
+  };
+
+  const handleSelectedTotal = () => {
+    let total = 0;
+    for (let i = 0; i < selectedItems.length; i++) {
+      total = total + selectedItems[i].price;
+    }
+    setSelectedTotal(total);
+  };
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "mealTypeFilter") setMealTypeFilter(value);
+    if (name === "vegetarianFilter") setVegetarianFilter(value);
+    if (name === "glutenFreeFilter") setGlutenFreeFilter(value);
+    if (name === "countryOfOriginFilter") setCountryOfOriginFilter(value);
+  };
+
+  return (
+    <>
+      <div className="floating-button-container">
+        <div className="go-tp-button">
+        <label>
+          Meal Type:
+          <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
+            <option value="">All</option>
+            {Object.keys(Menujson.hotelMenu).map((mealType) => (
+              <option key={mealType} value={mealType}>
+                {mealType}
+              </option>
+            ))}
+          </select>
+        </label>
+        </div>
+        <div className="catagory-button">Catagory</div>
+        <div className="selected-items-button" onClick={handleSelectButtonClicked}>
+          <a href="#selectedMenu"> {selectedButtonText} </a>
+        </div>
+      </div>
+      <h1>Thomas Kitaba</h1>
+
+      <div className="filters">
+
+        <label>
+          Vegetarian:
+          <select name="vegetarianFilter" value={vegetarianFilter} onChange={handleFilterChange}>
+            <option value="">All</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </label>
+        <label>
+          Gluten Free:
+          <select name="glutenFreeFilter" value={glutenFreeFilter} onChange={handleFilterChange}>
+            <option value="">All</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </label>
+        <label>
+          Country of Origin:
+          <select
+            name="countryOfOriginFilter"
+            value={countryOfOriginFilter}
+            onChange={handleFilterChange}
+          >
+            <option value="">All</option>
+            {countries.map((country, index) => (
+              <option key={index} value={country}>
+                {country}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      {Object.keys(Menujson.hotelMenu)
+        .filter((mealType) => (mealTypeFilter ? mealType === mealTypeFilter : true))
+        .map((mealType) => (
+          <div key={mealType} className={`${mealType} rounded-border`}>
+            <h2>{mealType}</h2>
+            {Menujson.hotelMenu[mealType]
+              .filter((item) =>
+                vegetarianFilter ? item.vegetarian.toString() === vegetarianFilter : true
+              )
+              .filter((item) =>
+                glutenFreeFilter ? item.glutenFree.toString() === glutenFreeFilter : true
+              )
+              .filter((item) =>
+                countryOfOriginFilter ? item.countryOfOrigin === countryOfOriginFilter : true
+              )
+              .map((item, index) => (
+                <div key={index} className="padding-block">
+                  <hr></hr>
+                  <input
+                    type="checkbox"
+                    id={`${mealType}-${index}`}
+                    checked={selectedItems.some(
+                      (selectedItem) =>
+                        selectedItem.name === item.name && selectedItem.mealType === mealType
+                    )}
+                    onChange={() => handleCheckboxChange(mealType, item)}
+                  />
+
+                  <label htmlFor={`${mealType}-${index}`}>
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                    <h3 className="price-text"> ${item.price.toFixed(2)}</h3>
+                    <p>Vegetarian: {item.vegetarian ? "Yes" : "No"}</p>
+                    <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
+                    <p>Country of Origin: {item.countryOfOrigin}</p>
+                    <p>Quantity: {item.Quantity}</p>
+                    <select name="Quantity" id="Quantity">
+                      {qty.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+              ))}
+          </div>
+        ))}
+      {showSelectedItems && (
+        <div className="hovering-form" id="selectedMenu">
+          <h2>Selected Items</h2>
+          {selectedItems.length === 0 ? (
+            <p>No items selected.</p>
+          ) : (
+            selectedItems.map((item, index) => (
+              <div key={index}>
+                <div className="flex-horizontal center-flex padding-inline">
+                  <h3>{item.name}</h3>
+                  <h3 className="price-text">{item.price.toFixed(2)}</h3>
+                  <button className="select-button" value={index} onClick={() => handleRemoveSelected(index)}>
+                    Remove
+                  </button>
+                </div>
+                <div className="flex-horizontal">
+                  <p>Vegetarian: {item.vegetarian ? "Yes" : "No"}</p>
+                  <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
+                  <p>Country of Origin: {item.countryOfOrigin}</p>
+                  <p>Meal Type: {item.mealType}</p>
+                </div>
+                <hr></hr>
+              </div>
+            ))
+          )}
+          <div>
+            <h3>Total = {selectedTotal} birr</h3>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Menu;

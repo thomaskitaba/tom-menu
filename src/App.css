@@ -1,0 +1,136 @@
+:root {
+
+  /* --bg-clr-Breakfast: linear-gradient(to right, #fdc1c3, #f3adb2, #f77e7e);
+  --bg-clr-Lunch: linear-gradient(to right, #c9fdc1, #c5f3ad, #8ef77e);
+  --bg-clr-Dinner: linear-gradient(to right, #a27ef7, #adb5f3, #e77ef7);
+  --bg-clr-Beverages: linear-gradient(to right, #dbf77e, #ecf3ad, #e7f77e); */
+
+  /* --bg-clr-Breakfast: #dee03b;
+  --bg-clr-Lunch: #98b043;
+  --bg-clr-Dinner: #416d3d;
+  --bg-clr-Beverages: #959e40 ; */
+
+
+  --bg-clr-Breakfast: #edeebf;
+  --bg-clr-Lunch: #bbc0a8;
+  --bg-clr-Dinner: #b6cdb3;
+  --bg-clr-Beverages: #bbbf9b ;
+
+}
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.floating-button-container {
+  display: flex;
+  border-radius: 20px;
+  justify-content: space-around;
+  border-radius: 20px;
+  flex-direction: column;
+  /* gap: 1px; */
+  padding: 1rem;
+  position: fixed;
+  height: 100px;
+  width: auto;
+  top: 50%;
+  right: 10px;
+  transform: translate(0%, -50%);
+  background-color: rgba(22, 22, 22, 0.2);
+  box-shadow: 0 0 10px rgba(55, 55, 55, 0.5);
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 3;
+}
+
+.catagory-button, .selected-items-button {
+  background-color: rgba(44, 55, 66, 0.8);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+.selected-items-button a, .selected-items-button a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* misselanious */
+.select-button {
+  height: 20px;
+}
+.hovering-form{
+  background-color: rgb(244, 244, 99);
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(55, 55, 55, 0.5);
+  position: absolute;
+  top: 60%;
+  padding-top: 50px;
+  padding-inline: 10px;
+  left: 50%;
+  transform: translate( -50%);
+  width: 90%;
+  z-index: 2;
+}
+
+.price-text {
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+  background-color: white;
+  padding: 5px;
+  border-radius: 20px;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 20px;
+}
+.price-text::before {
+  content: 'Price(birr)';
+  position: absolute;
+  top:  -20px;
+  color: blue;
+  font-size: 0.75rem;
+}
+
+/* Catagory colors */
+.Breakfast {
+  background: var(--bg-clr-Breakfast);
+}
+.Lunch {
+  background: var(--bg-clr-Lunch);
+}
+.Dinner {
+  background: var(--bg-clr-Dinner);
+}
+.Beverages {
+  background: var(--bg-clr-Beverages);
+}
+.Default-Bg {
+  background: var(--bg-clr-Breakfast);
+}
+/* ***Tweaks*** */
+.rounded-border {
+  border-radius: 20px;
+}
+.flex-horizontal {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+.center-flex {
+  justify-content: "center";
+  align-items: "center";
+}
+.padding-inline {
+  padding-inline: 10px;
+}
+.padding-block {
+  padding-block: 10px;
+}
