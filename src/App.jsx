@@ -12,11 +12,13 @@ function App() {
 
   return (
     <>
-      <MyContextProvider>
-        <MegaMenuNavbar />
-        <Menu />
-        <Welcome />
-      </MyContextProvider>
+      <div className="app-container">
+        <MyContextProvider>
+          <MegaMenuNavbar />
+          <Menu />
+          <Welcome />
+        </MyContextProvider>
+      </div>
     </>
   )
 }

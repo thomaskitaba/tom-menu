@@ -81,64 +81,72 @@ const Menu = () => {
 
       <div className="floating-button-container">
         <div className="go-tp-button">
-        <label>
-          Meal Type:
-          <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
-            <option value="">All</option>
-            {Object.keys(Menujson.hotelMenu).map((mealType) => (
-              <option key={mealType} value={mealType}>
-                {mealType}
-              </option>
-            ))}
-          </select>
-        </label>
+          <div className="">Meal Type:</div>
+        <div className="meal-type-input">
+          <label>
+
+            <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {Object.keys(Menujson.hotelMenu).map((mealType) => (
+                <option key={mealType} value={mealType}>
+                  {mealType}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
-        <div className="catagory-button"  onClick={(e) => { setShowMegaMenu(!showMegaMenu) }}> <a href="#mega-menu">Catagory</a></div>
+        </div>
+        <div className="catagory-button"  onClick={(e) => { setShowMegaMenu(!showMegaMenu) }}> Catagory</div>
         <div className="selected-items-button" onClick={ handleSelectButtonClicked }>
           <a href="#selectedMenu"> {selectedButtonText} </a>
         </div>
       </div>
-      <h1>Thomas Kitaba</h1>
-
-      <div className="filters">
-
-        <label>
-          Vegetarian:
-          <select name="vegetarianFilter" value={vegetarianFilter} onChange={handleFilterChange}>
-            <option value="">All</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </label>
-        <label>
-          Gluten Free:
-          <select name="glutenFreeFilter" value={glutenFreeFilter} onChange={handleFilterChange}>
-            <option value="">All</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </label>
-        <label>
-          Country of Origin:
-          <select
-            name="countryOfOriginFilter"
-            value={countryOfOriginFilter}
-            onChange={handleFilterChange}
-          >
-            <option value="">All</option>
-            {countries.map((country, index) => (
-              <option key={index} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
-        </label>
+      <div className="hero-page">
+        <div className="hero-page-text">
+        <h1>Welcome to</h1>
+        </div>
+        </div>
+      <div className="filters-container">
+      <div><h3>Filters</h3></div>
+        <div className="filters">
+          <label>
+            Vegetarian:
+            <select name="vegetarianFilter" value={vegetarianFilter} onChange={handleFilterChange}>
+              <option value="">All</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </label>
+          <label>
+            Gluten Free:
+            <select name="glutenFreeFilter" value={glutenFreeFilter} onChange={handleFilterChange}>
+              <option value="">All</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </label>
+          <label>
+            Country of Origin:
+            <select
+              name="countryOfOriginFilter"
+              value={countryOfOriginFilter}
+              onChange={handleFilterChange}
+            >
+              <option value="">All</option>
+              {countries.map((country, index) => (
+                <option key={index} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
       </div>
 
       {Object.keys(Menujson.hotelMenu)
         .filter((mealType) => (mealTypeFilter ? mealType === mealTypeFilter : true))
         .map((mealType) => (
-          <div key={mealType} className={`${mealType} rounded-border`}>
+          <div key={mealType} className={`${mealType} `}>
             <h2>{mealType}</h2>
             {Menujson.hotelMenu[mealType]
               .filter((item) =>
@@ -193,7 +201,7 @@ const Menu = () => {
           ) : (
             selectedItems.map((item, index) => (
               <div key={index}>
-                <div className="flex-horizontal center-flex padding-inline">
+                <div className="selected-items-content flex-horizontal center-flex padding-inline">
                   <h3>{item.name}</h3>
                   <h3 className="price-text">{item.price.toFixed(2)}</h3>
                   <button className="select-button" value={index} onClick={() => handleRemoveSelected(index)}>
@@ -212,6 +220,7 @@ const Menu = () => {
           )}
           <div>
             <h3>Total = {selectedTotal} birr</h3>
+            <div className="refresh-total" onClick={(e)=> handleSelectedTotal()}> Refresh </div>
           </div>
         </div>
       )}
