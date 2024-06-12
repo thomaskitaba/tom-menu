@@ -6,7 +6,8 @@ import Menu from './components/Menu';
 import Catagory from './components/Catagory';
 import Welcome from './components/Welcome';
 import Navigation from './components/MegaMenuNavbar';
-import MegaMenuNavbar from './components/MegaMenuNavbar'
+import MegaMenuNavbar from './components/MegaMenuNavbar';
+
 function App() {
 
   return (

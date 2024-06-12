@@ -23,12 +23,12 @@ export const MegaMenuNavbar = () => {
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   }
+
   return (
     <>
       { showMegaMenu ?
           <>
-            <div className="mega-menu-container">
-
+            <div className="mega-menu-container" id="mega-menu">
               <div className="foods">
                 <ul>
                   <li>BreakFast</li>
@@ -69,7 +69,5 @@ export const MegaMenuNavbar = () => {
     </>
   )
 }
-
-
 
 export default MegaMenuNavbar;

@@ -1,10 +1,12 @@
 import Menujson from './Menujson';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Catagory from './Catagory';
+import MyContext from './MyContext';
 
 
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const { showMegaMenu, setShowMegaMenu } = useContext(MyContext);
   const [selectedItems, setSelectedItems] = useState([]);
   const [showSelectedItems, setShowSelectedItems] = useState(false);
   const [selectedButtonText, setSelectedButtonText] = useState("Selected");
@@ -91,8 +93,8 @@ const Menu = () => {
           </select>
         </label>
         </div>
-        <div className="catagory-button">Catagory</div>
-        <div className="selected-items-button" onClick={handleSelectButtonClicked}>
+        <div className="catagory-button"  onClick={(e) => { setShowMegaMenu(!showMegaMenu) }}> <a href="#mega-menu">Catagory</a></div>
+        <div className="selected-items-button" onClick={ handleSelectButtonClicked }>
           <a href="#selectedMenu"> {selectedButtonText} </a>
         </div>
       </div>
