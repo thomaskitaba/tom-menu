@@ -60,13 +60,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   gap: 10px;
-  top: 20%;
+  top: 0%;
   color: var(--text-color-dark-green);
   padding: 1rem;
 
-
+}
+@media (min-width: 767px) {
+  .hero-page-text {
+    font-size: 2rem;
+  }
 }
 /* ****** navBar **** */
 .nav-container {
@@ -177,7 +181,7 @@
   top: 100%;
   right: 10px;
   transform: translate(0%, -125%);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px rgba(55, 55, 55, 0.5);
   bottom: 2rem;
   right: 2rem;
