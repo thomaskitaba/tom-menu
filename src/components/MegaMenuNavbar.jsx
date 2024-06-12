@@ -61,7 +61,7 @@ export const MegaMenuNavbar = () => {
         <div className="logo-container"></div>
         <div className="nav-menu">
           <div className="nav-catagory" onClick={(e)=> setShowMegaMenu(!showMegaMenu)}>Catagory</div>
-          <div className="nav-comment" >Comment</div>
+          <div className="nav-comment" >Packages</div>
 
         </div>
       </div>
