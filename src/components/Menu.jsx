@@ -1,5 +1,7 @@
 import Menujson from './Menujson';
 import React, { useState, useEffect } from 'react';
+import Catagory from './Catagory';
+
 
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -74,6 +76,7 @@ const Menu = () => {
 
   return (
     <>
+
       <div className="floating-button-container">
         <div className="go-tp-button">
         <label>
