@@ -124,8 +124,8 @@ const Menu = () => {
             </label>
           </div>
         </div>
-        <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> Catagory</div>
-        <div className="selected-items-button" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
+        <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> <a href="#mega-menu">Catagory </a></div>
+        <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">{selectedButtonText}</a></div>
       </div>
       {/* <div className="hero-page">
 
@@ -225,7 +225,7 @@ const Menu = () => {
           </div>
         ))}
       {showSelectedItems && (
-        <div className="hovering-form" id="selectedMenu">
+        <div className="hovering-form" id="selected-menu">
           <h2>Selected Items</h2>
           {selectedItems.length === 0 ? (
             <p>No items selected.</p>
