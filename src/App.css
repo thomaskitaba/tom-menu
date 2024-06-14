@@ -262,6 +262,21 @@ input {
   background-color: #416d3d;
   border: 1px solid rgba(55, 55, 55, 0.5);
 } */
+
+
+/* *** Message of the day **** */
+.message-container {
+  height: 25vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.message-list {
+  list-style: none;
+
+}
+/* *** Filter *** */
 .filters-container {
   display: flex;
   flex-direction: column;
