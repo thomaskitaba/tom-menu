@@ -127,9 +127,6 @@ const Menu = () => {
         <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> <a href="#mega-menu">Catagory </a></div>
         <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">{selectedButtonText}</a></div>
       </div>
-      {/* <div className="hero-page">
-
-      </div> */}
 
       <div className="filters-container">
         <div><h3>Filters</h3></div>

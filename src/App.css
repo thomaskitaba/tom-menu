@@ -252,13 +252,13 @@ input {
   box-shadow: 1px 2px 2px var(--bg-clr-Breakfast);
 
 }
-/* .catagory-button:hover, .selected-items-button:hover
-.selected-items-button a, .selected-items-button a:hover
-.reset-menu:hover a, .reset-menu a:hover{
+.catagory-button a,
+.selected-items-button a
+{
   text-decoration: none;
   color: black;
-  box-shadow: 1px 2px 2px var(--bg-clr-Beverages);
-} */
+
+}
 .refresh-total {
   margin: 0 auto;
   margin-top: 20px;
