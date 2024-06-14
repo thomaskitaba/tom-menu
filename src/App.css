@@ -90,7 +90,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border: 2px solid var(--clr-border-green);
+  /* border: 2px solid var(--clr-border-green); */
   border-radius: 8px;
   width: 200px;
   padding-inline: 20px;
