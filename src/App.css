@@ -366,7 +366,7 @@ input {
   top: 60%;
   left: 50%;
   transform: translate( -50%); */
-  width: 100vw;
+  width: 100%;
   z-index: 2;
   margin-top: 5px;
 }
