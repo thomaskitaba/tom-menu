@@ -97,13 +97,13 @@ const Menu = () => {
         </div>
         </div>
         <div className="catagory-button"  onClick={(e) => { setShowMegaMenu(!showMegaMenu) }}> Catagory</div>
-        <div className="selected-items-button" onClick={ handleSelectButtonClicked }>
-          <a href="#selectedMenu"> {selectedButtonText} </a>
+        <div className="selected-items-button" onClick={ handleSelectButtonClicked }> {selectedButtonText}
+          {/* <a href="#selectedMenu"> {selectedButtonText} </a> */}
         </div>
       </div>
       <div className="hero-page">
         <div className="hero-page-text">
-        <h1>Welcome to</h1>
+        {/* <h1>Welcome to</h1> */}
         </div>
         </div>
       <div className="filters-container">

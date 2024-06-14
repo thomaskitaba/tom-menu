@@ -53,6 +53,31 @@ export const MegaMenuNavbar = () => {
                 </ul>
 
               </div>
+              <div className="foods">
+                <ul>
+                  <li>BreakFast</li>
+                  <li>Lunch</li>
+                  <li>Dinner</li>
+                </ul>
+
+              </div>
+              <div className="drinks">
+              <ul>
+                  <li>SoftDrinks</li>
+                  <li>Beverages</li>
+                  <li>Wine</li>
+                </ul>
+
+              </div>
+              <div className="packages">
+              <ul>
+                  <li>cathering</li>
+                  <li> party package</li>
+                  <li>wedding package</li>
+                </ul>
+
+              </div>
+
             </div>
           </>
           : null
