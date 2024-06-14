@@ -3,18 +3,22 @@ import React, { useState, useEffect, useContext } from 'react';
 import Catagory from './Catagory';
 import MyContext from './MyContext';
 
+
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const { showMegaMenu, setShowMegaMenu } = useContext(MyContext);
+
+
   const [selectedItems, setSelectedItems] = useState([]);
-  const { showSelectedItems, setShowSelectedItems } = useContext(MyContext);
+
+  const {showSelectedItems, setShowSelectedItems} = useContext(MyContext);
   const [selectedButtonText, setSelectedButtonText] = useState("Selected");
   const [selectedTotal, setSelectedTotal] = useState(0);
+
   const [mealTypeFilter, setMealTypeFilter] = useState("");
   const [vegetarianFilter, setVegetarianFilter] = useState("");
   const [glutenFreeFilter, setGlutenFreeFilter] = useState("");
   const [countryOfOriginFilter, setCountryOfOriginFilter] = useState("");
-  const [selectedQuantities, setSelectedQuantities] = useState({});
 
   // Extract unique countries from the menu items
   const countries = [
@@ -23,50 +27,50 @@ const Menu = () => {
     ),
   ];
 
-  const handleCheckboxChange = (mealType, item, quantity) => {
+  const handleCheckboxChange = (mealType, item) => {
+
     setSelectedItems((prevSelectedItems) => {
       const isSelected = prevSelectedItems.some(
         (selectedItem) =>
           selectedItem.name === item.name && selectedItem.mealType === mealType
       );
 
-      let updatedItems;
       if (isSelected) {
-        updatedItems = prevSelectedItems.filter(
+        return prevSelectedItems.filter(
           (selectedItem) =>
             !(selectedItem.name === item.name && selectedItem.mealType === mealType)
+
         );
       } else {
-        updatedItems = [...prevSelectedItems, { ...item, mealType, quantity }];
+        return [...prevSelectedItems, { ...item, mealType }];
+         handleSelectedTotal();
       }
-
-      handleSelectedTotal(updatedItems);
-      return updatedItems;
     });
+
   };
 
   const handleSelectButtonClicked = () => {
     setShowSelectedItems(!showSelectedItems);
     setShowMegaMenu(false);
-    setSelectedButtonText(showSelectedItems ? "Selected" : "Hide");
+    handleSelectedTotal();
+    setSelectedButtonText(selectedButtonText === "Selected" ? "Hide" : "Selected");
   };
 
   const handleRemoveSelected = (index) => {
-    setSelectedItems((prevSelectedItems) => {
-      const newSelectedItems = [...prevSelectedItems];
-      newSelectedItems.splice(index, 1);
-      handleSelectedTotal(newSelectedItems);
-      if (newSelectedItems.length === 0) {
-        setShowSelectedItems(false);
-      }
-      return newSelectedItems;
-    });
+    const newSelectedItems = [...selectedItems];
+    selectedItems.splice(index, 1);
+    setSelectedItems(selectedItems);
+    // setSelectedTotal(selectedTotal - selectedItems[i].price )
+    handleSelectedTotal();
+    if (selectedItems.length === 0) {
+      setShowSelectedItems(false);
+    }
   };
 
-  const handleSelectedTotal = (items) => {
+  const handleSelectedTotal = () => {
     let total = 0;
-    for (let i = 0; i < items.length; i++) {
-      total += items[i].price * (items[i].quantity || 1);
+    for (let i = 0; i < selectedItems.length; i++) {
+      total = total + selectedItems[i].price;
     }
     setSelectedTotal(total);
   };
@@ -79,51 +83,37 @@ const Menu = () => {
     if (name === "countryOfOriginFilter") setCountryOfOriginFilter(value);
   };
 
-  const handleQuantityChange = (e, mealType, item) => {
-    const quantity = parseInt(e.target.value, 10);
-    const updatedQuantities = { ...selectedQuantities, [`${mealType}-${item.name}`]: quantity };
-    setSelectedQuantities(updatedQuantities);
-
-    setSelectedItems((prevSelectedItems) => {
-      const updatedItems = prevSelectedItems.map((selectedItem) =>
-        selectedItem.name === item.name && selectedItem.mealType === mealType
-          ? { ...selectedItem, quantity }
-          : selectedItem
-      );
-
-      handleSelectedTotal(updatedItems);
-      return updatedItems;
-    });
-  };
-
   return (
     <>
       <div className="floating-button-container">
         <div className="go-tp-button">
           <div className="">Meal Type:</div>
-          <div className="meal-type-input">
-            <label>
-              <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
-                <option value="">All</option>
-                {Object.keys(Menujson.hotelMenu).map((mealType) => (
-                  <option key={mealType} value={mealType}>
-                    {mealType}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
+        <div className="meal-type-input">
+          <label>
+
+            <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {Object.keys(Menujson.hotelMenu).map((mealType) => (
+                <option key={mealType} value={mealType}>
+                  {mealType}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
-        <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> Catagory</div>
-        <div className="selected-items-button" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
+        </div>
+        <div className="catagory-button"  onClick={(e) => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> Catagory</div>
+        <div className="selected-items-button" onClick={ handleSelectButtonClicked }> {selectedButtonText}
+          {/* <a href="#selectedMenu"> {selectedButtonText} </a> */}
+        </div>
       </div>
       <div className="hero-page">
         <div className="hero-page-text">
-          {/* <h1>Welcome to</h1> */}
+        {/* <h1>Welcome to</h1> */}
         </div>
-      </div>
+        </div>
       <div className="filters-container">
-        <div><h3>Filters</h3></div>
+      <div><h3>Filters</h3></div>
         <div className="filters">
           <label>
             Vegetarian:
@@ -184,25 +174,19 @@ const Menu = () => {
                       (selectedItem) =>
                         selectedItem.name === item.name && selectedItem.mealType === mealType
                     )}
-                    onChange={() => {
-                      const quantity = selectedQuantities[`${mealType}-${item.name}`] || 1;
-                      handleCheckboxChange(mealType, item, quantity);
-                    }}
+
+                    onChange={() => {handleCheckboxChange(mealType, item); }}
                   />
+
                   <label htmlFor={`${mealType}-${index}`}>
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
-                    <h3 className="price-text">${item.price.toFixed(2)}</h3>
+                    <h3 className="price-text"> ${item.price.toFixed(2)}</h3>
                     <p>Vegetarian: {item.vegetarian ? "Yes" : "No"}</p>
                     <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
                     <p>Country of Origin: {item.countryOfOrigin}</p>
-                    <p>Quantity: {selectedQuantities[`${mealType}-${item.name}`] || 1}</p>
-                    <select
-                      name="Quantity"
-                      id="Quantity"
-                      onChange={(e) => handleQuantityChange(e, mealType, item)}
-                      value={selectedQuantities[`${mealType}-${item.name}`] || 1}
-                    >
+                    <p>Quantity: {item.Quantity}</p>
+                    <select name="Quantity" id="Quantity">
                       {qty.map((option, index) => (
                         <option key={index} value={option}>
                           {option}
@@ -224,8 +208,8 @@ const Menu = () => {
               <div key={index}>
                 <div className="selected-items-content flex-horizontal center-flex padding-inline">
                   <h3>{item.name}</h3>
-                  <h3 className="price-text">${item.price.toFixed(2)}</h3>
-                  <button className="select-button" onClick={() => handleRemoveSelected(index)}>
+                  <h3 className="price-text">{item.price.toFixed(2)}</h3>
+                  <button className="select-button" value={index} onClick={() => handleRemoveSelected(index)}>
                     Remove
                   </button>
                 </div>
@@ -234,7 +218,6 @@ const Menu = () => {
                   <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
                   <p>Country of Origin: {item.countryOfOrigin}</p>
                   <p>Meal Type: {item.mealType}</p>
-                  <p>Quantity: {item.quantity}</p>
                 </div>
                 <hr></hr>
               </div>
@@ -242,7 +225,7 @@ const Menu = () => {
           )}
           <div>
             <h3>Total = {selectedTotal} birr</h3>
-            <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div>
+            <div className="refresh-total" onClick={(e)=> handleSelectedTotal()}> Refresh </div>
           </div>
         </div>
       )}
