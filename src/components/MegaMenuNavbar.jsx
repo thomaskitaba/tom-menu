@@ -32,53 +32,47 @@ export const MegaMenuNavbar = () => {
             <div className="mega-menu-container" id="mega-menu">
               <div className="foods">
                 <ul>
-                  <li>BreakFast</li>
-                  <li>Lunch</li>
-                  <li>Dinner</li>
+                  <li>
+                    <a href="#Breakfast">Breakfast</a>
+                  </li>
+                  <li>
+                    <a href="#Lunch">Lunch</a>
+                  </li>
+                  <li>
+                    <a href="#Dinner">Dinner</a>
+                  </li>
                 </ul>
+
+
 
               </div>
               <div className="drinks">
               <ul>
-                  <li>SoftDrinks</li>
-                  <li>Beverages</li>
-                  <li>Wine</li>
-                </ul>
+                <li>
+                  <a href="#soft-drinks">SoftDrinks</a>
+                </li>
+                <li>
+                  <a href="#Beverages">Beverages</a>
+                </li>
+                <li>
+                  <a href="#Wine">Wine</a>
+                </li>
+              </ul>
 
               </div>
               <div className="packages">
               <ul>
-                  <li>cathering</li>
-                  <li> party package</li>
-                  <li>wedding package</li>
-                </ul>
-
+                <li>
+                  <a href="#cathering">Cathering</a>
+                </li>
+                <li>
+                  <a href="#party-package">Party Package</a>
+                </li>
+                <li>
+                  <a href="#wedding-package">Wedding Package</a>
+                </li>
+              </ul>
               </div>
-              <div className="foods">
-                <ul>
-                  <li>BreakFast</li>
-                  <li>Lunch</li>
-                  <li>Dinner</li>
-                </ul>
-
-              </div>
-              <div className="drinks">
-              <ul>
-                  <li>SoftDrinks</li>
-                  <li>Beverages</li>
-                  <li>Wine</li>
-                </ul>
-
-              </div>
-              <div className="packages">
-              <ul>
-                  <li>cathering</li>
-                  <li> party package</li>
-                  <li>wedding package</li>
-                </ul>
-
-              </div>
-
             </div>
           </>
           : null
@@ -88,10 +82,8 @@ export const MegaMenuNavbar = () => {
         <div className="nav-menu">
           <div className="nav-catagory" onClick={(e)=> {setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false)}}>Catagory</div>
           <div className="nav-comment" >Packages</div>
-
         </div>
       </div>
-
     </>
   )
 }

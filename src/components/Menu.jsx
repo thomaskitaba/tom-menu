@@ -58,6 +58,7 @@ const Menu = () => {
       handleSelectedTotal(newSelectedItems);
       if (newSelectedItems.length === 0) {
         setShowSelectedItems(false);
+        setSelectedButtonText('Selected');
       }
       return newSelectedItems;
     });
@@ -71,7 +72,15 @@ const Menu = () => {
     setSelectedTotal(total.toFixed(2));
   };
 
-  const handleFilterChange = (e) => {
+  const handleResetButtonClicked = () => {
+    setSelectedItems([]);
+    setSelectedQuantities({});
+    setSelectedTotal(0);
+    setShowSelectedItems(false);
+    setSelectedButtonText('Selected');
+  }
+
+    const handleFilterChange = (e) => {
     const { name, value } = e.target;
     if (name === "mealTypeFilter") setMealTypeFilter(value);
     if (name === "vegetarianFilter") setVegetarianFilter(value);
@@ -100,6 +109,7 @@ const Menu = () => {
     <>
       <div className="floating-button-container">
         <div className="go-tp-button">
+          <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}>Reset</div>
           <div className="">Meal Type:</div>
           <div className="meal-type-input">
             <label>
@@ -117,11 +127,10 @@ const Menu = () => {
         <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> Catagory</div>
         <div className="selected-items-button" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
       </div>
-      <div className="hero-page">
-        <div className="hero-page-text">
-          {/* <h1>Welcome to</h1> */}
-        </div>
-      </div>
+      {/* <div className="hero-page">
+
+      </div> */}
+
       <div className="filters-container">
         <div><h3>Filters</h3></div>
         <div className="filters">
@@ -162,8 +171,8 @@ const Menu = () => {
       {Object.keys(Menujson.hotelMenu)
         .filter((mealType) => (mealTypeFilter ? mealType === mealTypeFilter : true))
         .map((mealType) => (
-          <div key={mealType} className={`${mealType} `}>
-            <h2>{mealType}</h2>
+          <div key={mealType} className={`${mealType}`}  id={`${mealType}`}>
+            <h2 >{mealType}</h2>
             {Menujson.hotelMenu[mealType]
               .filter((item) =>
                 vegetarianFilter ? item.vegetarian.toString() === vegetarianFilter : true
@@ -196,7 +205,7 @@ const Menu = () => {
                     <p>Vegetarian: {item.vegetarian ? "Yes" : "No"}</p>
                     <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
                     <p>Country of Origin: {item.countryOfOrigin}</p>
-                    <p>Quantity: {selectedQuantities[`${mealType}-${item.name}`] || 1}</p>
+                    <p className="quantity">Quantity:
                     <select
                       name="Quantity"
                       id="Quantity"
@@ -209,6 +218,7 @@ const Menu = () => {
                         </option>
                       ))}
                     </select>
+                    </p>
                   </label>
                 </div>
               ))}
@@ -225,6 +235,7 @@ const Menu = () => {
                 <div className="selected-items-content flex-horizontal center-flex padding-inline">
                   <h3>{item.name}</h3>
                   <h3 className="price-text">${item.price.toFixed(2)}</h3>
+                  <h3 className="quantity-text"> {item.quantity}  </h3>
                   <button className="select-button" onClick={() => handleRemoveSelected(index)}>
                     Remove
                   </button>
@@ -234,7 +245,7 @@ const Menu = () => {
                   <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
                   <p>Country of Origin: {item.countryOfOrigin}</p>
                   <p>Meal Type: {item.mealType}</p>
-                  <p>Quantity: {item.quantity}</p>
+                  {/* <p>Quantity: <h2 className="quantity-text"> {item.quantity} </h2></p> */}
                 </div>
                 <hr></hr>
               </div>
@@ -242,8 +253,13 @@ const Menu = () => {
           )}
           <div>
             <h3>Total = {selectedTotal} birr</h3>
+            {selectedItems.length > 0 ? <>
             <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div>
-          </div>
+            </> : <>
+            <div className="selected-items-button" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
+            </>
+            }
+            </div>
         </div>
       )}
     </>

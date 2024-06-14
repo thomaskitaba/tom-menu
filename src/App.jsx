@@ -2,6 +2,8 @@ import { useState } from 'react';
 import MyContextProvider from './components/MyContextProvider';
 
 import './App.css';
+import Heropage from './components/Heropage';
+import Messageoftheday from './components/Messageoftheday';
 import Menu from './components/Menu';
 import Catagory from './components/Catagory';
 import Welcome from './components/Welcome';
@@ -15,6 +17,8 @@ function App() {
       <div className="app-container">
         <MyContextProvider>
           <MegaMenuNavbar />
+          <Heropage />
+          <Messageoftheday />
           <Menu />
           <Welcome />
         </MyContextProvider>

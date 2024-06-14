@@ -14,17 +14,18 @@
   --bg-clr-Lunch: #98b043;
   --bg-clr-Dinner: #416d3d;
   --bg-clr-Beverages: #959e40 ; */
-  --txt-clr-dark: #416d3d;
+
+  /* --txt-clr-dark: #416d3d;
   --text-color-dark-green: #3f6d3e;
-  --bg-clr-Breakfast: #dee03b;
+  --bg-clr-Breakfast: #f4f5c9;
   --bg-clr-Lunch: #98b043;
   --bg-clr-Dinner: #416d3d;
-  --bg-clr-Beverages: #959e40 ;
+  --bg-clr-Beverages: #959e40 ; */
 
-  --bg-clr-Breakfast: #edeebf;
-  --bg-clr-Lunch: #bbc0a8;
+  --bg-clr-Breakfast: #f6f7df;
+  --bg-clr-Lunch: #c3c5bc;
   --bg-clr-Dinner: #b6cdb3;
-  --bg-clr-Beverages: #bbbf9b ;
+  --bg-clr-Beverages: #c6c8bc ;
 
   --clr-border-green: rgb(120, 242, 142);
 
@@ -34,14 +35,13 @@
   max-width: 1280px;
   margin: 40px auto;
   padding-block: 2rem;
-  padding-inline-start: 20px;
+  /* padding-inline-start: 20px; */
   text-align: center;
 }
 /* ***Hero Page *** */
 .hero-page {
   display: flex;
   position: relative;
-
   justify-content: center;
   align-items: center;
   gap: 20px;
@@ -50,10 +50,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: 50vh;
+  height: 25vh;
   /* border-radius: 20px; */
   /* box-shadow: 0 0 8px rgba(55, 55, 55, 0.5); */
-
 }
 .hero-page-text {
   display: flex;
@@ -121,9 +120,11 @@
   border: 2px solid var(--clr-border-green);
   box-shadow: 1px 2px 2px rgba(55, 55, 55, 0.5);
   padding: 1rem;
-  margin-top: 0.rem;
+  margin: 0 auto;
+  /* margin-top: 0.rem; */
   /* color: var(--txt-clr-dark); */
   border-radius: 10px;
+
 }
 
 
@@ -179,17 +180,18 @@
 
 /* the end */
 .floating-button-container {
+
   display: flex;
   border-radius: 20px;
   justify-content: space-around;
   border-radius: 20px;
   flex-direction: column;
-  /* gap: 1px; */
+  gap: 8px;
   padding: 1rem;
   position: fixed;
-  height: 150px;
+  height: max-content;
   width: auto;
-  top: 100%;
+  top: 100dvh;
   right: 10px;
   transform: translate(0%, -125%);
   background-color: rgba(255, 255, 255, 0.8);
@@ -198,12 +200,22 @@
   right: 2rem;
   z-index: 3;
 }
+.reset-menu {
+  margin: 0 auto;
+
+  border-radius: 50%;
+  border: 2px solid var(--clr-border-green);
+  width: fit-content;
+  padding: 10px;
+
+}
+/*
 input {
   padding: 0.5rem;
   border-radius: 5px;
   background-color: #416d3d;
   border: 1px solid rgba(55, 55, 55, 0.5);
-}
+} */
 .filters-container {
   display: flex;
   flex-direction: column;
@@ -223,20 +235,30 @@ input {
   gap: 10px;
   background-color: rgba(255, 255, 255, 0.2);
 }
-.catagory-button, .selected-items-button {
+.catagory-button, .selected-items-button, .reset-menu {
   /* background-color: rgba(44, 55, 66, 0.8); */
-  max-width: 100px;
+  min-width: 80px;
+
   /* color: white; */
   padding: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 1px 2px 2px rgba(55, 55, 55, 0.5);
 
 }
-.catagory-button:hover, .selected-items-button:hover
-.selected-items-button a, .selected-items-button a:hover {
+.catagory-button:hover, .selected-items-button:hover, .reset-menu:hover {
+  /* background-color: rgba(44, 55, 66, 0.8); */
+
+  box-shadow: 1px 2px 2px var(--bg-clr-Breakfast);
+
+}
+/* .catagory-button:hover, .selected-items-button:hover
+.selected-items-button a, .selected-items-button a:hover
+.reset-menu:hover a, .reset-menu a:hover{
   text-decoration: none;
   color: black;
-}
+  box-shadow: 1px 2px 2px var(--bg-clr-Beverages);
+} */
 .refresh-total {
   margin: 0 auto;
   margin-top: 20px;
@@ -269,64 +291,136 @@ input {
   width: 100vw;
   z-index: 2;
 }
-
-.price-text {
+.quantity {
+  margin-right: 10px;
+  color: blue;
+  font-size: 1.25rem;
+}
+.price-text, .quantity-text {
   display: flex;
   margin: 0 auto;
   position: relative;
   background-color: white;
+  /* border: 2px solid var(--clr-border-green); */
   padding: 5px;
-  border-radius: 20px;
+  border-radius: 10px;
   width: fit-content;
   height: fit-content;
   margin-top: 20px;
+  box-shadow: 1px 1px 2px inset grey, 1px 1px 2px grey, 1px -1px 2px grey, -1px 1px 2px grey;
 }
 
+.quantity-text {
+  padding-inline: 20px;
+}
 .price-text::before {
   content: 'Price(birr)';
   position: absolute;
   top:  -20px;
+  left: 0%;
   color: blue;
   font-size: 0.75rem;
 }
-
+.quantity-text::before {
+  content: 'Quantity';
+  position: absolute;
+  top:  -20px;
+  left: 0%;
+  color: blue;
+  font-size: 0.75rem;
+}
 /* Catagory colors */
 .foods, .drinks, .packages{
   padding: 1rem;
   border-radius: 20px;
 
   font-size: 1.25rem;
-  cursor: pointer;
+  /* cursor: pointer; */
+}
+
+.foods, .Beverages, .packages, .drinks, .Breakfast, .Lunch, .Dinner, .Beverages, .Default-Bg{
+  box-shadow: 1px 1px 2px grey, -1px -1px 2px grey;
+}
+.foods:hover, .Beverages:hover, .packages:hover, .drinks:hover, .Breakfast:hover, .Lunch:hover, .Dinner:hover, .Beverages:hover, .Default-Bg:hover {
+  box-shadow: 1px 2px 4px 1px rgba(55, 55, 55, 0.5);
 }
 
 .foods {
+  border: 4px solid var(--bg-clr-Breakfast);
+  box-shadow: 1px 1px 2px grey, -1px -1px 2px grey;
   background: var(--bg-clr-Breakfast);
 }
 .Beverages {
+  border: 4px solid var(--bg-clr-Beverages);
   background: var(--bg-clr-Beverages);
 }
 .packages {
+  border: 4px solid var(--bg-clr-Dinner);
   background: var(--bg-clr-Dinner);
 }
 .drinks {
-  background: var(--bg-clr-Beverages);
+  border: 4px solid  var(--bg-clr-Beverages);
+  background: var(--bg-clr-Beverages)
 }
 .Breakfast {
+  border: 4px solid var(--bg-clr-Breakfast);
   background: var(--bg-clr-Breakfast);
 }
 .Lunch {
+  border: 4px solid  var(--bg-clr-Lunch);
   background: var(--bg-clr-Lunch);
 }
 .Dinner {
+  border: 4px solid var(--bg-clr-Dinner);
   background: var(--bg-clr-Dinner);
 }
 .Beverages {
-  background: var(--bg-clr-Beverages);
+  border: 4px solid  var(--bg-clr-Beverages);
 }
 .Default-Bg {
-  background: var(--bg-clr-Breakfast);
+  border: 4px solid  var(--bg-clr-Breakfast);
 }
 /* ***Tweaks*** */
+/* Style for the select element */
+select {
+  /* Change border properties */
+  border: 2px solid var(--clr-border-green); /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  padding-block: 2px; /* Padding top/bottom */
+  padding-inline: 8px; /* Padding inside the select box */
+  font-size: 16px; /* Font size of the select box text */
+  width: max-content; /* Adjust width as needed */
+  max-width: 100px;
+  margin-inline-start: 10px;
+  margin-block: 4px;
+  font-size: 16px; /* Font size of each option */
+  background-color: white;
+  font-weight: bold; /* Bold text for each option */
+  box-shadow: 1px 1px 2px inset grey, 1px 1px 2px grey, 1px -1px 2px grey, -1px 1px 2px grey;
+}
+select:hover {
+  box-shadow: 1px 1px 2px inset var(--clr-border-green), 1px 1px 2px var(--clr-border-green), 1px -1px 2px var(--clr-border-green), -1px 1px 2px var(--clr-border-green);
+}
+
+/* Style for the options inside the select element */
+select option {
+  /* Change background and text color */
+  background-color: var(--bg-clr-Breakfast); /* Background color of options */
+  padding: 8px; /* Padding inside each option */
+
+}
+
+/* Hover state for options */
+select option:hover {
+  background-color: #1fff62; /* Background color on hover */
+}
+
+/* Selected option style */
+select option:checked {
+  background-color: #007bff; /* Background color of the selected option */
+  color: #fff; /* Text color of the selected option */
+
+}
 
 button {
   border: 2px solid var(--clr-border-green);
@@ -335,6 +429,8 @@ button {
   padding: 15px;
   border-radius: 5px;
   height: 50px;
+  position: relative;
+  top: 20px;
 }
 .rounded-border {
   border-radius: 20px;

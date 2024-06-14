@@ -10,7 +10,6 @@ const MyContextProvider = ({ children }) => {
       {children}
     </MyContext.Provider>
   );
-
 }
 
 export default MyContextProvider;
