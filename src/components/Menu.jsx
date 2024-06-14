@@ -2,6 +2,7 @@ import Menujson from './Menujson';
 import React, { useState, useEffect, useContext } from 'react';
 import Catagory from './Catagory';
 import MyContext from './MyContext';
+import { ArrowRepeat, CheckCircle, Check, Basket, Trash, Book, BookFill } from 'react-bootstrap-icons';
 
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -109,8 +110,8 @@ const Menu = () => {
     <>
       <div className="floating-button-container">
         <div className="go-tp-button">
-          <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}>Reset</div>
-          <div className="">Meal Type:</div>
+
+          <div className="">Filter by Meal Type:</div>
           <div className="meal-type-input">
             <label>
               <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
@@ -124,8 +125,11 @@ const Menu = () => {
             </label>
           </div>
         </div>
-        <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> <a href="#mega-menu">Catagory </a></div>
-        <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">{selectedButtonText}</a></div>
+        <div className="floating-buttons">
+          <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}><ArrowRepeat /></div>
+          <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> <a href="#mega-menu"><Basket /> </a></div>
+          <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">{selectedButtonText == 'Selected' ? <Book /> : <BookFill  />}</a></div>
+        </div>
       </div>
 
       <div className="filters-container">
@@ -164,6 +168,44 @@ const Menu = () => {
           </label>
         </div>
       </div>
+      {showSelectedItems && (
+        <div className="hovering-form" id="selected-menu">
+          <h2>Selected Items</h2>
+          {selectedItems.length === 0 ? (
+            <p>No items selected.</p>
+          ) : (
+            selectedItems.map((item, index) => (
+              <div key={index}>
+                <div className="selected-items-content flex-horizontal center-flex padding-inline">
+                  <h3>{item.name}</h3>
+                  <h3 className="price-text">${item.price.toFixed(2)}</h3>
+                  <h3 className="quantity-text"> {item.quantity}  </h3>
+                  <button className="select-button" onClick={() => handleRemoveSelected(index)}>
+                    Remove
+                  </button>
+                </div>
+                <div className="flex-horizontal">
+                  <p>Vegetarian: {item.vegetarian ? "Yes" : "No"}</p>
+                  <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
+                  <p>Country of Origin: {item.countryOfOrigin}</p>
+                  <p> Meal Type: {item.mealType}</p>
+                  {/* <p>Quantity: <h2 className="quantity-text"> {item.quantity} </h2></p> */}
+                </div>
+                <hr></hr>
+              </div>
+            ))
+          )}
+          <div>
+            <h3>Total = {selectedTotal} birr</h3>
+            {selectedItems.length > 0 ? <>
+            <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div>
+            </> : <>
+            <div className="selected-items-button-2" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
+            </>
+            }
+            </div>
+        </div>
+      )}
 
       {Object.keys(Menujson.hotelMenu)
         .filter((mealType) => (mealTypeFilter ? mealType === mealTypeFilter : true))
@@ -198,7 +240,7 @@ const Menu = () => {
                   <label htmlFor={`${mealType}-${index}`}>
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
-                    <h3 className="price-text">${item.price.toFixed(2)}</h3>
+                    <h3 className="price-text">birr {item.price.toFixed(2)}</h3>
                     <p>Vegetarian: {item.vegetarian ? "Yes" : "No"}</p>
                     <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
                     <p>Country of Origin: {item.countryOfOrigin}</p>
@@ -221,44 +263,7 @@ const Menu = () => {
               ))}
           </div>
         ))}
-      {showSelectedItems && (
-        <div className="hovering-form" id="selected-menu">
-          <h2>Selected Items</h2>
-          {selectedItems.length === 0 ? (
-            <p>No items selected.</p>
-          ) : (
-            selectedItems.map((item, index) => (
-              <div key={index}>
-                <div className="selected-items-content flex-horizontal center-flex padding-inline">
-                  <h3>{item.name}</h3>
-                  <h3 className="price-text">${item.price.toFixed(2)}</h3>
-                  <h3 className="quantity-text"> {item.quantity}  </h3>
-                  <button className="select-button" onClick={() => handleRemoveSelected(index)}>
-                    Remove
-                  </button>
-                </div>
-                <div className="flex-horizontal">
-                  <p>Vegetarian: {item.vegetarian ? "Yes" : "No"}</p>
-                  <p>Gluten Free: {item.glutenFree ? "Yes" : "No"}</p>
-                  <p>Country of Origin: {item.countryOfOrigin}</p>
-                  <p>Meal Type: {item.mealType}</p>
-                  {/* <p>Quantity: <h2 className="quantity-text"> {item.quantity} </h2></p> */}
-                </div>
-                <hr></hr>
-              </div>
-            ))
-          )}
-          <div>
-            <h3>Total = {selectedTotal} birr</h3>
-            {selectedItems.length > 0 ? <>
-            <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div>
-            </> : <>
-            <div className="selected-items-button" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
-            </>
-            }
-            </div>
-        </div>
-      )}
+
     </>
   );
 };

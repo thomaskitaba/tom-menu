@@ -200,15 +200,61 @@
   right: 2rem;
   z-index: 3;
 }
+.floating-buttons {
+  display: flex;
+  gap: 20px;
+}
+@media (min-width: 768px) {
+  .floating-button-container {
+    display: flex;
+    border-radius: 20px;
+    justify-content: space-around;
+    border-radius: 20px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 1rem;
+    position: fixed;
+    height: max-content;
+    width: auto;
+    top: 100dvh;
+    right: 10px;
+    transform: translate(0%, -125%);
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(55, 55, 55, 0.5);
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 3;
+
+  }
+}
 .reset-menu {
   margin: 0 auto;
-
   border-radius: 50%;
   border: 2px solid var(--clr-border-green);
   width: fit-content;
-  padding: 10px;
+  padding: -10px;
+}
+
+.reset-menu::before, .catagory-button::before, .selected-items-button::before {
+  /* content:'Reset'; */
+  position: absolute;
+  font-size: 0.75rem;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
 
 }
+.reset-menu::before {
+  content: 'Reset';
+}
+.catagory-button::before {
+  content: 'Catagory';
+}
+.selected-items-button::before {
+  content: 'Selected';
+
+}
+
 /*
 input {
   padding: 0.5rem;
@@ -237,15 +283,30 @@ input {
 }
 .catagory-button, .selected-items-button, .reset-menu {
   /* background-color: rgba(44, 55, 66, 0.8); */
-  min-width: 80px;
-  max-width: 100px;
+  /* min-width: 80px;
+  max-width: 100px; */
   /* color: white; */
   padding: 0.5rem;
-  border-radius: 5px;
+  border-radius: 50%;
   cursor: pointer;
   box-shadow: 1px 2px 2px rgba(55, 55, 55, 0.5);
+  position: relative;
+
 
 }
+.selected-items-button-2{
+
+  min-width: 80px;
+  max-width: 100px;
+  margin: 20px auto;
+  /* color: white; */
+  /* background-color: #b6cdb3; */
+  padding: 0.5rem;
+  border: 2px solid var(--clr-border-green);
+  cursor: pointer;
+  box-shadow: 1px 2px 2px rgba(55, 55, 55, 0.5);
+}
+
 .catagory-button:hover, .selected-items-button:hover, .reset-menu:hover {
   /* background-color: rgba(44, 55, 66, 0.8); */
 
@@ -281,15 +342,18 @@ input {
   background-color: white;
   /* border-radius: 20px; */
   box-shadow: 0 0 10px rgba(55, 55, 55, 0.5);
-  position: absolute;
-  top: 60%;
+
+
   padding-block: 50px;
   padding-inline: 10px;
   padding-inline-start: 20px;
+  /* position: absolute;
+  top: 60%;
   left: 50%;
-  transform: translate( -50%);
+  transform: translate( -50%); */
   width: 100vw;
   z-index: 2;
+  margin-top: 5px;
 }
 .quantity {
   margin-right: 10px;

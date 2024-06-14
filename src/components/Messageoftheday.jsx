@@ -3,7 +3,7 @@ const Messageoftheday = () => {
     <>
       <div className="message-image"> </div>
         <div className="message-text">
-          <ul classNam="message-list">
+          <ul className="message-list">
             <li>Today is Mothers Day </li>
             <li></li>
             <li></li>
