@@ -238,7 +238,7 @@ input {
 .catagory-button, .selected-items-button, .reset-menu {
   /* background-color: rgba(44, 55, 66, 0.8); */
   min-width: 80px;
-
+  max-width: 100px;
   /* color: white; */
   padding: 0.5rem;
   border-radius: 5px;
@@ -407,7 +407,6 @@ select option {
   /* Change background and text color */
   background-color: var(--bg-clr-Breakfast); /* Background color of options */
   padding: 8px; /* Padding inside each option */
-
 }
 
 /* Hover state for options */
