@@ -68,7 +68,7 @@ const Menu = () => {
     for (let i = 0; i < items.length; i++) {
       total += items[i].price * (items[i].quantity || 1);
     }
-    setSelectedTotal(total);
+    setSelectedTotal(total.toFixed(2));
   };
 
   const handleFilterChange = (e) => {
