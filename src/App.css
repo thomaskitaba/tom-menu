@@ -273,7 +273,6 @@
 .selected-items-button::after {
   content: 'የተመረጠ';
 }
-
 /* *** Message of the day **** */
 .message-container {
   height: 25vh;
@@ -281,11 +280,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 2px solid var(--clr-border-green);
+
 }
 .message-list {
   list-style: none;
-
 }
+
 /* *** Filter *** */
 .filters-container {
   display: flex;
@@ -298,7 +299,6 @@
   box-shadow: 0 0 10px rgba(55, 55, 55, 0.5);
   /* position: fixed; */
   z-index: 3;
-
 }
 .filters {
   display: flex;
@@ -438,23 +438,23 @@
 .quantity-text {
   padding-inline: 20px;
 }
-.price-text::before {
-  content: 'Price(birr) | ዋጋ';
+.price-text::before, .quantity-text::before {
+
   position: absolute;
-  top:  -20px;
-  left: 0%;
+  top:  -50%;
+  left: -10%;
   color: blue;
   font-size: 0.75rem;
-  width: fit-content;
+  min-width: 80px;
+  height: auto;
 }
 
+.price-text::before {
+  content: 'Price(birr) | ዋጋ';
+}
 .quantity-text::before {
   content: 'Quantity | ብዛት';
-  position: absolute;
-  top:  -20px;
-  left: 0%;
-  color: blue;
-  font-size: 0.75rem;
+
 }
 /* Catagory colors */
 .foods, .drinks, .packages{
@@ -525,6 +525,7 @@ select {
   background-color: white;
   font-weight: bold; /* Bold text for each option */
   box-shadow: 1px 1px 2px inset grey, 1px 1px 2px grey, 1px -1px 2px grey, -1px 1px 2px grey;
+
 }
 .filters-column  select {
   width: 100%;
