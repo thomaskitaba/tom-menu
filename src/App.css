@@ -563,13 +563,11 @@ border-radius: 20px;
   /* background-color: rgba(44, 55, 66, 0.8); */
   box-shadow: 1px 2px 2px var(--bg-clr-Breakfast);
 }
-
 .catagory-button a,
 .selected-items-button a
 {
   text-decoration: none;
   color: black;
-
 }
 .refresh-total {
   margin: 0 auto;
