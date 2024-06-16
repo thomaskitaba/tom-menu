@@ -111,19 +111,7 @@ const Menu = () => {
       <div className="floating-button-container">
         <div className="go-tp-button">
 
-          <div className="">Filter by Meal Type:</div>
-          <div className="meal-type-input">
-            <label>
-              <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
-                <option value="">All</option>
-                {Object.keys(Menujson.hotelMenu).map((mealType) => (
-                  <option key={mealType} value={mealType}>
-                    {mealType}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
+
         </div>
         <div className="floating-buttons">
           <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}><ArrowRepeat /></div>
@@ -135,37 +123,64 @@ const Menu = () => {
       <div className="filters-container">
         <div><h3>Filters</h3></div>
         <div className="filters">
-          <label>
-            Vegetarian:
-            <select name="vegetarianFilter" value={vegetarianFilter} onChange={handleFilterChange}>
-              <option value="">All</option>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </label>
-          <label>
-            Gluten Free:
-            <select name="glutenFreeFilter" value={glutenFreeFilter} onChange={handleFilterChange}>
-              <option value="">All</option>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </label>
-          <label>
-            Country of Origin:
-            <select
-              name="countryOfOriginFilter"
-              value={countryOfOriginFilter}
-              onChange={handleFilterChange}
-            >
-              <option value="">All</option>
-              {countries.map((country, index) => (
-                <option key={index} value={country}>
-                  {country}
-                </option>
-              ))}
-            </select>
-          </label>
+
+          <div className="filters-column">
+            <div>
+              <label>
+                <div className="filters-lable">Meal Type: የምግብ አይነት</div>
+
+                <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
+                  <option value="">All</option>
+                  {Object.keys(Menujson.hotelMenu).map((mealType) => (
+                    <option key={mealType} value={mealType}>
+                      {mealType}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <div>
+              <label>
+                <div className="filters-lable">Vegetarian:</div>
+                <select name="vegetarianFilter" value={vegetarianFilter} onChange={handleFilterChange}>
+                  <option value="">All</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div className="filters-column">
+
+            <div>
+              <label>
+                < div className="filters-lable">Gluten Free:</div>
+                <select name="glutenFreeFilter" value={glutenFreeFilter} onChange={handleFilterChange}>
+                  <option value="">All</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </label>
+            </div>
+
+            <div >
+              <label>
+                <div className="filters-lable"> Country of Origin:</div>
+                <select
+                  name="countryOfOriginFilter"
+                  value={countryOfOriginFilter}
+                  onChange={handleFilterChange}
+                >
+                  <option value="">All</option>
+                  {countries.map((country, index) => (
+                    <option key={index} value={country}>
+                      {country}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
       {showSelectedItems && (
@@ -181,7 +196,7 @@ const Menu = () => {
                   <h3 className="price-text">${item.price.toFixed(2)}</h3>
                   <h3 className="quantity-text"> {item.quantity}  </h3>
                   <button className="select-button" onClick={() => handleRemoveSelected(index)}>
-                    Remove
+                    Remove | አስወግድ
                   </button>
                 </div>
                 <div className="flex-horizontal">
