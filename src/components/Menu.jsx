@@ -134,7 +134,6 @@ const Menu = () => {
               </a></div>
         </div>
       </div>
-Vegetarian
       <div className="filters-container">
         <div><h3>Filters</h3></div>
         <div className="filters">
