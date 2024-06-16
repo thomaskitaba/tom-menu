@@ -79,6 +79,11 @@ const Menu = () => {
     setSelectedTotal(0);
     setShowSelectedItems(false);
     setSelectedButtonText('Selected');
+    // setMealTypeFilter('All');
+    // setVegetarianFilter('All');
+    // setGlutenFreeFilter('All');
+    // setCountryOfOriginFilter('All');
+    handleFilterChange();
   }
 
     const handleFilterChange = (e) => {
