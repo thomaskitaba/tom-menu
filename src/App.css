@@ -427,15 +427,16 @@ border-radius: 20px;
 .filters {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid var(--bg-clr-Beverages);
+  border-radius: 20px;
 }
 .filters-column {
   display: flex;
-  gap: 5px;
+  gap: 0px;
   flex-direction: column;
-  padding: 10px 20px;
+  padding: 10px 0px;
   width: 100%;
 }
 .filters-column div {
