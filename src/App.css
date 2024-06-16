@@ -15,9 +15,12 @@
   --bg-clr-Dinner: #416d3d;
   --bg-clr-Beverages: #959e40 ; */
 
+
+
   --txt-clr-dark: #416d3d;
   --text-color-dark-green: #3f6d3e;
   --bg-clr-Breakfast: #f4f5c9;
+  --bg-clr-header: white;
   --panorama-clr-1: #e3e545;
   --panorama-clr-2: #3f6d3e;
   --panorama-clr-3: #959e40 ;
@@ -82,7 +85,7 @@
   left: 0;
   top: 0;
   height: var(--nav-height);
-  background-color: white;
+  background-color: var(--bg-clr-header);
   box-shadow: 1px 2px 2px rgba(55, 55, 55, 0.5);
   /* padding: 1rem; */
   display: flex;
@@ -225,7 +228,7 @@
   right: 0;
   left: 0;
 
-  background-color: #ffffff;
+  background-color: var(--bg-clr-header);
   padding: 1rem;
   z-index: 2;
   box-shadow: 1px 2px 2px rgba(55, 55, 55, 0.5);
