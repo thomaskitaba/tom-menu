@@ -119,7 +119,7 @@ const Menu = () => {
 
         </div>
         <div className="floating-buttons">
-          <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}><ArrowRepeat /></div>
+          <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}><ArrowRepeat className="reset-component"/></div>
           <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> <a href="#mega-menu"><Basket /> </a></div>
           <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">{selectedButtonText == 'Selected' ? <Book /> : <BookFill  />}</a></div>
         </div>

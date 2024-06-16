@@ -476,7 +476,20 @@ border-radius: 20px;
   box-shadow: 1px 2px 2px rgba(55, 55, 55, 0.5);
   position: relative;
   border: 2px solid var(--clr-border-green);
+  transition: all 0.3s;
 
+}
+.reset-menu:hover .reset-component {
+  animation: rotate 2s linear infinite;
+  color: blue;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); /* Starting position */
+  }
+  to {
+    transform: rotate(360deg); /* Ending position (full circle) */
+  }
 }
 .selected-items-button-2{
 
@@ -495,6 +508,9 @@ border-radius: 20px;
   /* background-color: rgba(44, 55, 66, 0.8); */
 
   box-shadow: 1px 2px 2px var(--bg-clr-Breakfast);
+
+}
+.reset-menu:hover {
 
 }
 .catagory-button a,
