@@ -146,7 +146,7 @@ const Menu = () => {
             </div>
             <div>
               <label>
-                <div className="filters-lable">Vegetarian | የዖም:</div>
+                <div className="filters-lable">Vegetarian | የጾም:</div>
                 <select name="vegetarianFilter" value={vegetarianFilter} onChange={handleFilterChange}>
                   <option value="">All</option>
                   <option value="true">Yes</option>
@@ -156,10 +156,9 @@ const Menu = () => {
             </div>
           </div>
           <div className="filters-column">
-
             <div>
               <label>
-                < div className="filters-lable">Gluten Free:</div>
+                < div className="filters-lable">Gluten Free | ከግሉተን ነጻ:</div>
                 <select name="glutenFreeFilter" value={glutenFreeFilter} onChange={handleFilterChange}>
                   <option value="">All</option>
                   <option value="true">Yes</option>
@@ -170,7 +169,7 @@ const Menu = () => {
 
             <div >
               <label>
-                <div className="filters-lable"> Country of Origin:</div>
+                <div className="filters-lable"> Country | ሀገር:</div>
                 <select
                   name="countryOfOriginFilter"
                   value={countryOfOriginFilter}
