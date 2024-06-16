@@ -479,8 +479,8 @@ border-radius: 20px;
   transition: all 0.3s;
 
 }
-.reset-menu:hover .reset-component {
-  animation: rotate 2s linear infinite;
+ .reset-component {
+  animation: rotate 8s linear infinite;
   color: blue;
 }
 @keyframes rotate {
