@@ -2,7 +2,7 @@ import Menujson from './Menujson';
 import React, { useState, useEffect, useContext } from 'react';
 import Catagory from './Catagory';
 import MyContext from './MyContext';
-import { ArrowRepeat, CheckCircle, Check, Basket, Trash, Book, BookFill } from 'react-bootstrap-icons';
+import { ArrowRepeat, CheckCircle, ArrowDown, Check, Basket, Trash, Book, BookFill } from 'react-bootstrap-icons';
 
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -134,7 +134,7 @@ const Menu = () => {
               </a></div>
         </div>
       </div>
-
+Vegetarian
       <div className="filters-container">
         <div><h3>Filters</h3></div>
         <div className="filters">
@@ -142,8 +142,7 @@ const Menu = () => {
           <div className="filters-column">
             <div>
               <label>
-                <div className="filters-lable">Meal Type: የምግብ አይነት</div>
-
+         <div className="filters-lable"><div style={{display: 'flex'}}>Meal Type</div><div> የምግብ አይነት</div></div>
                 <select name="mealTypeFilter" value={mealTypeFilter} onChange={handleFilterChange}>
                   <option value="">All</option>
                   {Object.keys(Menujson.hotelMenu).map((mealType) => (
@@ -156,7 +155,7 @@ const Menu = () => {
             </div>
             <div>
               <label>
-                <div className="filters-lable">Vegetarian | የጾም:</div>
+                <div className="filters-lable"><div>Vegetarian</div> <div>የጾም </div></div>
                 <select name="vegetarianFilter" value={vegetarianFilter} onChange={handleFilterChange}>
                   <option value="">All</option>
                   <option value="true">Yes</option>
@@ -168,7 +167,7 @@ const Menu = () => {
           <div className="filters-column">
             <div>
               <label>
-                < div className="filters-lable">Gluten Free | ከግሉተን ነጻ:</div>
+                < div className="filters-lable"><div>Gluten Free </div><div> ከግሉተን ነጻ </div></div>
                 <select name="glutenFreeFilter" value={glutenFreeFilter} onChange={handleFilterChange}>
                   <option value="">All</option>
                   <option value="true">Yes</option>
@@ -179,7 +178,7 @@ const Menu = () => {
 
             <div >
               <label>
-                <div className="filters-lable"> Country | ሀገር:</div>
+                <div className="filters-lable"><div> Country </div><div> ሀገር </div></div>
                 <select
                   name="countryOfOriginFilter"
                   value={countryOfOriginFilter}
