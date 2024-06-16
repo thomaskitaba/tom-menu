@@ -7,6 +7,7 @@ import { ArrowRepeat, CheckCircle, Check, Basket, Trash, Book, BookFill } from '
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const { showMegaMenu, setShowMegaMenu } = useContext(MyContext);
+  const [resetClicked, setResetClicked] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const { showSelectedItems, setShowSelectedItems } = useContext(MyContext);
   const [selectedButtonText, setSelectedButtonText] = useState("Selected");
@@ -74,6 +75,7 @@ const Menu = () => {
   };
 
   const handleResetButtonClicked = () => {
+    setResetClicked(!resetClicked);
     setSelectedItems([]);
     setSelectedQuantities({});
     setSelectedTotal(0);
@@ -119,9 +121,15 @@ const Menu = () => {
 
         </div>
         <div className="floating-buttons">
-          <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}><ArrowRepeat className="reset-component"/></div>
-          <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> <a href="#mega-menu"><Basket className="catagory-component"/> </a></div>
-          <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">{selectedButtonText == 'Selected' ? <Book className="selected-component"/> : <BookFill />}</a></div>
+          <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}>
+            {resetClicked ? <ArrowRepeat className="reset-component"/> : <ArrowRepeat /> }</div>
+          <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> <a href="#mega-menu">{selectedButtonText == 'Selected' ? <Book className="selected-component"/> : <BookFill />} </a></div>
+          <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">
+            {
+            selectedItems.length > 0 ?
+            <><Basket className="catagory-component"/> </> : <><Basket /></>
+            }
+              </a></div>
         </div>
       </div>
 
