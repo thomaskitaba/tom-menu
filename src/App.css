@@ -107,6 +107,7 @@
 }
 
 .nav-menu {
+
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -114,18 +115,26 @@
   align-items: center;
   max-width: 1280px;
   background-color: var(--panorama-clr-1);
+  border-radius: 20px;
   width: 50px;
   height: 50px;
   position: absolute;
   top: 10%;
   bottom: 10%;
   right: 10%;
-  transition: all 0.3s;
+
   cursor: pointer;
 
+  background-image: url(./assets/img/burger.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 2px 2px 4px 0px grey;
+  transition: all 0.3s;
 }
 .nav-menu:hover {
   border-radius: 20%;
+  box-shadow: -2px -2px 4px 0px grey;
 }
 .nav-menu:hover .nav-center-0, .nav-menu:hover .nav-center-1, .nav-menu:hover .nav-center-2 {
   background-color: var(--panorama-clr-2);
@@ -143,22 +152,19 @@
   z-index: 4;
   transition: all 0.3s;
 }
-.nav-menu:hover::before {
-  display: block;
-}
-.nav-center-0, .nav-center-1, .nav-center-2 {
 
+/* .nav-center-0, .nav-center-1, .nav-center-2 {
   width: 80%;
   height: 8px;
   background-color: var(--panorama-clr-3);
-
-}
+} */
 .nav-catagory, .nav-comment {
   display: none;
 }
 @media (min-width: 768px) {
 
 .nav-menu {
+  background-image: none;
   background-color: white;
   padding: 20px;
   position: absolute;
@@ -171,7 +177,13 @@
   font-family: Arial, Helvetica, sans-serif;
   top: 10%;
   bottom: 10%;
-  right: 50%;
+  right: 20%;
+
+  box-shadow: none;
+}
+.nav-menu:hover {
+  border-radius: 20%;
+  box-shadow: none;
 }
 .nav-center {
   display: none;
