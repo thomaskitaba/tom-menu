@@ -141,7 +141,7 @@ const Menu = () => {
             </div>
             <div>
               <label>
-                <div className="filters-lable">Vegetarian:</div>
+                <div className="filters-lable">Vegetarian | የዖም:</div>
                 <select name="vegetarianFilter" value={vegetarianFilter} onChange={handleFilterChange}>
                   <option value="">All</option>
                   <option value="true">Yes</option>

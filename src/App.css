@@ -77,7 +77,7 @@
 }
 /* ****** navBar **** */
 .nav-container {
-  width: 100vw;
+  width: 100%;
   position: absolute;
   left: 0;
   top: 0;
@@ -246,6 +246,15 @@
   transform: translate(-50%);
 
 }
+.reset-menu::after, .catagory-button::after, .selected-items-button::after {
+  /* content:'Reset'; */
+  position: absolute;
+  font-size: 0.75rem;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%);
+
+}
 .reset-menu::before {
   content: 'Reset';
 }
@@ -254,17 +263,16 @@
 }
 .selected-items-button::before {
   content: 'Selected';
-
 }
-
-/*
-input {
-  padding: 0.5rem;
-  border-radius: 5px;
-  background-color: #416d3d;
-  border: 1px solid rgba(55, 55, 55, 0.5);
-} */
-
+.reset-menu::after {
+  content: 'ከእንድገና';
+}
+.catagory-button::after {
+  content: 'ምድብ';
+}
+.selected-items-button::after {
+  content: 'የተመረጠ';
+}
 
 /* *** Message of the day **** */
 .message-container {
