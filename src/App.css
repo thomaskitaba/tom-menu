@@ -491,6 +491,45 @@ border-radius: 20px;
     transform: rotate(360deg); /* Ending position (full circle) */
   }
 }
+.catagory-button:hover .catagory-component{
+
+  color: blue;
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) infinite;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 40%, 70%, 90% {
+    transform: translateX(-3px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(3px);
+  }
+}
+/* Styles for the jumping element */
+.selected-items-button:hover .selected-component{
+
+  position: relative;
+  top: 0;
+  color: blue;
+  animation: jump 0.5s ease infinite alternate; /* Animation properties */
+}
+
+/* Keyframes for the jump animation */
+@keyframes jump {
+  0% {
+    top: 0; /* Initial position */
+  }
+  50% {
+    top: -5px; /* Jumping up position */
+  }
+  100% {
+    top: 0; /* Sitting down position */
+  }
+}
+
 .selected-items-button-2{
 
   min-width: 80px;
