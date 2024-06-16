@@ -27,27 +27,13 @@ export const MegaMenuNavbar = () => {
     setActiveLink(value);
   };
 
-  // Function to chunk array into multiple arrays
-  const chunkArray = (arr, chunkSize) => {
-    const chunkedArray = [];
-    for (let i = 0; i < arr.length; i += chunkSize) {
-      chunkedArray.push(arr.slice(i, i + chunkSize));
-    }
-    return chunkedArray;
-  };
-
   const renderMenuLinks = () => {
-    // Get array of meal types (categories)
-    const mealTypes = Object.keys(Menujson.hotelMenu);
-    // Chunk meal types into arrays of maximum 3 items
-    const chunkedMealTypes = chunkArray(mealTypes, 3);
-
-    return chunkedMealTypes.map((chunk, index) => (
-      <div key={index} className="menu-column">
+    return Object.keys(Menujson.hotelMenu).map(category => (
+      <div key={category} className={category.toLowerCase()}>
         <ul>
-          {chunk.map((category) => (
-            <li key={category}>
-              <a href={`#${category.replace(/ /g, "-")}`}>{category}</a>
+          {Menujson.hotelMenu[category].map((item, index) => (
+            <li key={index}>
+              <a href={`#${item.name.replace(/ /g, "-")}`}>{item.name}</a>
             </li>
           ))}
         </ul>
@@ -60,9 +46,7 @@ export const MegaMenuNavbar = () => {
       { showMegaMenu ?
         <>
           <div className="mega-menu-container" id="mega-menu">
-            <div className="menu-columns">
-              {renderMenuLinks()}
-            </div>
+            {renderMenuLinks()}
           </div>
         </>
         : null

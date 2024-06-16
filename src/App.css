@@ -180,8 +180,53 @@
   border-bottom: 1px solid rgba(55, 55, 55, 0.5);
   font-size: 1.25rem;
 }
+/* Existing CSS remains unchanged */
 
-/* the end */
+/* New CSS for menu columns */
+.menu-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-inline-start: 20px;
+
+}
+
+.menu-column {
+  font-size: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(55, 55, 55, 0.5);
+  /* position: fixed; */
+  z-index: 3;
+  min-height: 100px;
+  flex: 1 1 calc(33.33% - 20px); /* Adjust width here */
+}
+.menu-column a {
+  text-decoration: none;
+  line-height: 1.5;
+  padding: 8px;
+  border-radius: 10px;
+  color: black;
+  min-width: 100px;
+}
+.menu-column a:hover {
+  text-decoration: none;
+  border: 2px solid var(--clr-border-green);
+  color: black;
+}
+@media (max-width: 768px) {
+  .menu-column {
+    flex: 1 1 100%;
+
+  }
+}
+
+/* *** FLOATING BUTTONS *** */
 .floating-button-container {
 
   display: flex;
