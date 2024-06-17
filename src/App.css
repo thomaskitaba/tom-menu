@@ -96,6 +96,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  filter: var(--clr-bg-one);
   /* border: 2px solid var(--clr-border-green); */
   border-radius: 8px;
   width: 200px;
@@ -106,7 +107,7 @@
 }
 
 .logo-container:hover {
-  box-shadow: 1px 2px 4px 1px var(--clr-border-green);
+  /* box-shadow: 1px 2px 4px 1px var(--clr-border-green); */
 }
 
 .nav-menu {
@@ -117,10 +118,10 @@
   justify-content: center;
   align-items: center;
   max-width: 1280px;
-  background-color: var(--panorama-clr-1);
+  /* background-color: var(--panorama-clr-1); */
   border-radius: 20px;
-  width: 50px;
-  height: 50px;
+  width:60px;
+  height: 60px;
   position: absolute;
   top: 10%;
   bottom: 10%;
@@ -132,12 +133,15 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  box-shadow: 2px 2px 4px 0px grey;
+  /* box-shadow: 2px 2px 4px 0px grey; */
   transition: all 0.3s;
 }
 .nav-menu:hover {
-  border-radius: 20%;
-  box-shadow: -2px -2px 4px 0px grey;
+  width: 50px;
+  height: 50px;
+  filter: red;
+  /* border-radius: 20%; */
+  /* box-shadow: -2px -2px 4px 0px grey; */
 }
 .nav-menu:hover .nav-center-0, .nav-menu:hover .nav-center-1, .nav-menu:hover .nav-center-2 {
   background-color: var(--panorama-clr-2);
