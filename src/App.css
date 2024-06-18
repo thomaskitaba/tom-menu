@@ -317,9 +317,8 @@ border-radius: 20px;
   flex-wrap: wrap;
   flex: 1 1 100%;
   padding-block: 20px;
+  padding-top: 40px;
 
-  /* background-color: red; */
-  /* max-width: 400px; */
 }
 .menu-flex {
 padding: 10px;
@@ -331,8 +330,10 @@ padding: 10px;
 }
 .catagory-header {
   position: absolute;
+  top: 0;  /* inportant attribute */
+  text-shadow: 1px 1px var(--clr-border-green);
+  font-size: 2rem;
 
-  margin: 0px;
 }
 @media (min-width: 768px) {
   .menu-flex {
