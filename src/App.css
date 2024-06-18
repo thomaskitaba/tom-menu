@@ -185,12 +185,14 @@
   top: 10%;
   bottom: 10%;
   right: 20%;
-
   box-shadow: none;
+
 }
 .nav-menu:hover {
+
   border-radius: 20%;
   box-shadow: none;
+  text-decoration: none;
 }
 .nav-center {
   display: none;
@@ -212,7 +214,9 @@
 
 
 .nav-catagory:hover, .nav-comment:hover {
-  background-color: rgba(55, 55, 55, 0.1);
+  background-color: var(--txt-clr-dark);
+  color: white;
+
 }
 }
 /* ** MEGAMENU ** */
@@ -304,6 +308,41 @@ border-radius: 20px;
   border: 2px solid var(--clr-border-green);
   color: black;
 }
+.menu-flex-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+  padding-block: 20px;
+
+  /* background-color: red; */
+  /* max-width: 400px; */
+}
+.menu-flex {
+padding: 10px;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 90%;
+  box-shadow: 1px 1px 2px 0 grey, -1px -1px 2px 0 grey;
+
+}
+.catagory-header {
+  position: absolute;
+
+  margin: 0px;
+}
+@media (min-width: 768px) {
+  .menu-flex {
+
+  width: 400px;
+  margin: 40px 10px 0px 10px;
+  }
+}
+
+
 @media (max-width: 768px) {
   .menu-column {
     flex: 1 1 100%;

@@ -237,8 +237,10 @@ const Menu = () => {
       {Object.keys(Menujson.hotelMenu)
         .filter((mealType) => (mealTypeFilter ? mealType === mealTypeFilter : true))
         .map((mealType) => (
-          <div key={mealType} className={`${mealType}`}  id={`${mealType}`}>
-            <h2 >{mealType}</h2>
+          <div key={mealType} className={`${mealType} menu-flex-container` }  id={`${mealType}`}>
+
+            <h2 className="catagory-header">{mealType}</h2>
+
             {Menujson.hotelMenu[mealType]
               .filter((item) =>
                 vegetarianFilter ? item.vegetarian.toString() === vegetarianFilter : true
@@ -250,8 +252,8 @@ const Menu = () => {
                 countryOfOriginFilter ? item.countryOfOrigin === countryOfOriginFilter : true
               )
               .map((item, index) => (
-                <div key={index} className="padding-block">
-                  <hr></hr>
+                <div key={index} className="padding-block menu-flex">
+                  {/* <hr></hr> */}
                   <input
                     type="checkbox"
                     id={`${mealType}-${index}`}
@@ -288,7 +290,9 @@ const Menu = () => {
                   </label>
                 </div>
               ))}
+
           </div>
+          // TODO:
         ))}
 
     </>
