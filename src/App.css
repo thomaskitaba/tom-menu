@@ -615,13 +615,14 @@ border-radius: 20px;
 }
 .price-text, .quantity-text {
   display: flex;
+  flex-direction: row;
   margin: 0 auto;
   position: relative;
   background-color: white;
   /* border: 2px solid var(--clr-border-green); */
   padding: 5px;
   border-radius: 10px;
-  width: max-content;
+  width: fit-content;
   height: fit-content;
   margin-top: 20px;
   box-shadow: 1px 1px 2px inset grey, 1px 1px 2px grey, 1px -1px 2px grey, -1px 1px 2px grey;
@@ -633,15 +634,19 @@ border-radius: 20px;
 
   position: absolute;
   top:  -50%;
-  left: -10%;
+  left: -0%;
   color: blue;
   font-size: 0.75rem;
-  min-width: 80px;
+  min-width: 100px;
+
   height: auto;
+  text-align: left;
+  padding-inline: 5px;
+  margin-bottom: 2px;
 }
 
 .price-text::before {
-  content: 'Price(birr) | ዋጋ';
+  content: 'Price | ዋጋ';
 }
 .quantity-text::before {
   content: 'Quantity | ብዛት';

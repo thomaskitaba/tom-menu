@@ -45,6 +45,17 @@
 
       },
       {
+        "name": "Doro Wote",
+        "description": "souce made from chicken, berbere, garlic, ginger, cardamom, and other spices.",
+        "price": 9.99,
+        "vegetarian": false,
+        "glutenFree": false,
+        "countryOfOrigin": "Ethiopia",
+        "className": "Lunch",
+        "Quantity": 1
+
+      },
+      {
         "name": "Grilled Chicken Sandwich",
         "description": "Grilled chicken breast with lettuce, tomato, and mayo on a whole wheat bun.",
         "price": 10.99,

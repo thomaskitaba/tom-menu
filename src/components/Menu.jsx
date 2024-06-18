@@ -81,11 +81,11 @@ const Menu = () => {
     setSelectedTotal(0);
     setShowSelectedItems(false);
     setSelectedButtonText('Selected');
-    // setMealTypeFilter('All');
-    // setVegetarianFilter('All');
-    // setGlutenFreeFilter('All');
-    // setCountryOfOriginFilter('All');
-    handleFilterChange();
+    setMealTypeFilter('');
+    setVegetarianFilter('');
+    setGlutenFreeFilter('');
+    setCountryOfOriginFilter('');
+    // handleFilterChange();
   }
 
     const handleFilterChange = (e) => {
@@ -205,9 +205,8 @@ const Menu = () => {
               <div key={index}>
                 <div className="selected-items-content flex-horizontal center-flex padding-inline">
                   <h3>{item.name}</h3>
-                  <h3 className="price-text"><span style={{ fontSize: "0.75px" }}>birr(ብር)</span>
-                  {item.price.toFixed(2)}</h3>
-                  <h3 className="quantity-text"> {item.quantity}  </h3>
+                  <h3 className="price-text">birr {item.price.toFixed(2)}</h3>
+                  <h3 className="quantity-text" > {item.quantity}  </h3>
                   <button className="select-button" onClick={() => handleRemoveSelected(index)}>
                    <Trash />
                   </button>
