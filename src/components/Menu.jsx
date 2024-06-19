@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Catagory from './Catagory';
 import MyContext from './MyContext';
 import { ArrowRepeat, CheckCircle, ArrowDown, Check, Basket, Trash, Book, BookFill } from 'react-bootstrap-icons';
+import Contact from './Contact';
 
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -46,10 +47,14 @@ const Menu = () => {
       return updatedItems;
     });
   };
-
+  const handleMegaMenuButtonClicked = () => {
+    setShowMegaMenu(!showMegaMenu);
+    // setSelectedButtonText(showSelectedItems ? "Selected" : "Hide");
+    setShowSelectedItems(false);
+  }
   const handleSelectButtonClicked = () => {
     setShowSelectedItems(!showSelectedItems);
-    setShowMegaMenu(false);
+
     setSelectedButtonText(showSelectedItems ? "Selected" : "Hide");
   };
 
@@ -125,7 +130,7 @@ const Menu = () => {
             {/* {resetClicked ? <ArrowRepeat className="reset-component"/> : <ArrowRepeat /> } */}
             <ArrowRepeat className="reset-component"/>
             </div>
-          <div className="catagory-button" onClick={() => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}> <a href="#mega-menu">{selectedButtonText == 'Selected' ? <Book className="selected-component"/> : <BookFill />} </a></div>
+          <div className="catagory-button" onClick={(e) =>  handleMegaMenuButtonClicked(e)}> <a href="#mega-menu">{!showMegaMenu ? <Book className="selected-component"/> : <BookFill />} </a></div>
           <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">
             {
             selectedItems.length > 0 ?
@@ -292,9 +297,10 @@ const Menu = () => {
               ))}
 
           </div>
+
           // TODO:
         ))}
-
+     <Contact />
     </>
   );
 };
