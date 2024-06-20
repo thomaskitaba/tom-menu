@@ -25,14 +25,12 @@ const Menu = () => {
       Object.values(Menujson.hotelMenu).flat().map((item) => item.countryOfOrigin)
     ),
   ];
-
   const handleCheckboxChange = (mealType, item, quantity) => {
     setSelectedItems((prevSelectedItems) => {
       const isSelected = prevSelectedItems.some(
         (selectedItem) =>
           selectedItem.name === item.name && selectedItem.mealType === mealType
       );
-
       let updatedItems;
       if (isSelected) {
         updatedItems = prevSelectedItems.filter(
@@ -42,7 +40,6 @@ const Menu = () => {
       } else {
         updatedItems = [...prevSelectedItems, { ...item, mealType, quantity }];
       }
-
       handleSelectedTotal(updatedItems);
       return updatedItems;
     });
@@ -122,8 +119,6 @@ const Menu = () => {
     <>
       <div className="floating-button-container">
         <div className="go-tp-button">
-
-
         </div>
         <div className="floating-buttons">
           <div className="reset-menu" onClick={(e)=> handleResetButtonClicked(e)}>
@@ -179,7 +174,6 @@ const Menu = () => {
                 </select>
               </label>
             </div>
-
             <div >
               <label>
                 <div className="filters-lable"><div> Country </div><div> ሀገር </div></div>
@@ -227,8 +221,9 @@ const Menu = () => {
               </div>
             ))
           )}
-          <div>
-            <h3>Total = {selectedTotal} birr</h3>
+          <div className="selected-footer">
+            <div> <h3>Total = {selectedTotal} birr</h3> </div>
+            <div>
             {selectedItems.length > 0 ? <>
             <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div>
             </> : <>
@@ -236,6 +231,8 @@ const Menu = () => {
             </>
             }
             </div>
+            <div><div className="order-button"> Order</div> </div>
+          </div>
         </div>
       )}
 
