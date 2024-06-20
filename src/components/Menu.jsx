@@ -10,7 +10,7 @@ const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const { showMegaMenu, setShowMegaMenu } = useContext(MyContext);
   const [resetClicked, setResetClicked] = useState(false);
-  const [selectedItems, setSelectedItems] = useState([]);
+  // const [selectedItems, setSelectedItems] = useState([]);
   const { showSelectedItems, setShowSelectedItems } = useContext(MyContext);
   const [selectedButtonText, setSelectedButtonText] = useState("Selected");
   const [selectedTotal, setSelectedTotal] = useState(0);
@@ -22,6 +22,8 @@ const Menu = () => {
   const [orderButtonText, setOrderButtonText] = useState("Order");
   const [customerType, setCustomerType] = useState("Inside");
   const [orderStatus, setOrderStatus] = useState("Ordered");
+  const {showOrderForm, setShowOrderForm} = useContext(MyContext);
+  const {selectedItems, setSelectedItems} = useContext(MyContext);
   const {orderLocation, setOrderLocation} = useContext(MyContext);
   const {specialRequest, setSpecialRequest} = useContext(MyContext);
   const {endpoint, setEndpoint} = useContext(MyContext);
@@ -56,8 +58,11 @@ const Menu = () => {
     setShowSelectedItems(false);
   }
   const handleSelectButtonClicked = () => {
-    setShowSelectedItems(!showSelectedItems);
 
+    setShowSelectedItems(!showSelectedItems);
+    if (showSelectedItems === true) {
+      setShowOrderForm(false);
+    }
     setSelectedButtonText(showSelectedItems ? "Selected" : "Hide");
   };
 
@@ -88,6 +93,7 @@ const Menu = () => {
     setSelectedQuantities({});
     setSelectedTotal(0);
     setShowSelectedItems(false);
+    setShowOrderForm(false);
     setSelectedButtonText('Selected');
     setMealTypeFilter('');
     setVegetarianFilter('');
@@ -99,21 +105,20 @@ const Menu = () => {
   const handleOrderClicked = async (e) => {
 
       e.preventDefault();
-
       setOrderButtonText('Ordering...');
        // TODO: test Data
-       setSpecialRequest("without salt");
-       setOrderLocation("Table 14");
+      //  setSpecialRequest("without salt");
+      //  setOrderLocation("Table 14");
 
       const formData = {
             customerType: customerType,
             orderLocation: orderLocation,
             specialRequest: specialRequest
           };
+
       formData.order = selectedItems;
       formData.totalPrice = selectedTotal;
       // alert(JSON.stringify(formData)); Test
-
       // alert(`${fname}, ${lname}, ${phone}, ${email}, ${message}`);
       let response = await fetch( `${endpoint}/order`, {
           method: 'POST',
@@ -125,20 +130,18 @@ const Menu = () => {
 
       // TODO: reset state variables after succsful ordering
       setOrderButtonText('Order');
-      setOrderLocation('');
-      setCustomerType('Inside');
-      setSpecialRequest('empty');
+      // TODO: test Data
+      // setOrderLocation('');
+      // setCustomerType('Inside');
+      // setSpecialRequest('empty');
 
 
-
-      // setForm(formInitialsDetail);
       let result = await response.json();
       if (result.code === 200) {
         setOrderStatus({success: true, message: 'Order sent successfully'});
       } else {
         setOrderStatus({success: false, message: 'Something went wrong, please try again later.'});
       }
-
   }
 
   const handleFilterChange = (e) => {
@@ -160,7 +163,6 @@ const Menu = () => {
           ? { ...selectedItem, quantity }
           : selectedItem
       );
-
       handleSelectedTotal(updatedItems);
       return updatedItems;
     });
@@ -168,6 +170,15 @@ const Menu = () => {
 
   return (
     <>
+     { showOrderForm &&
+      <>
+        <div className="order-form">
+          <input placeholder="Table|location" name="location" value ={orderLocation} onChange={(e) => setOrderLocation(e.target.value)} />
+          <input placeholder="Special Request" name="location" value ={specialRequest} onChange={(e) => setSpecialRequest(e.target.value)} />
+          <div className="order-button" onClick={(e)=> handleOrderClicked (e)}> {orderButtonText} </div>
+        </div>
+      </>
+      }
       <div className="floating-button-container">
         <div className="go-tp-button">
         </div>
@@ -277,12 +288,15 @@ const Menu = () => {
             <div>
             {selectedItems.length > 0 ? <>
             {/* <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div> */}
-            <div><div className="order-button" onClick={(e)=> handleOrderClicked(e)}> {orderButtonText}</div> </div>
-            </> : <>
-            <div className="selected-items-button-2" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
+            <div className="order-container">
+              <div className="order-button" onClick={(e)=> setShowOrderForm(!showOrderForm)}> Click to Order  </div>
+              </div>
+            </>
+            :
+            <>
+              <div className="selected-items-button-2" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
             </>
             }
-
             </div>
 
           </div>

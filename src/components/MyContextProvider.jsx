@@ -6,11 +6,13 @@ const MyContextProvider = ({ children }) => {
   // const [selectedItems, setSelectedItems] = useState([]);
   const [showSelectedItems, setShowSelectedItems] = useState(false);
   const [orderLocation, setOrderLocation] = useState('');
-  const [specialRequest, setSpecialRequest] = useState('no request');
+  const [specialRequest, setSpecialRequest] = useState('');
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [showOrderForm, setShowOrderForm] = useState(false);
   // const [endpoint, setEndpoint] = useState('http://localhost:5000');
 const [endpoint, setEndpoint] = useState('https://tom-menu.onrender.com');
     return (
-      <MyContext.Provider value={{ endpoint, setEndpoint, showMegaMenu, setShowMegaMenu, showSelectedItems, setShowSelectedItems, orderLocation, setOrderLocation, specialRequest, setSpecialRequest}}>
+      <MyContext.Provider value={{ endpoint, setEndpoint, selectedItems, setSelectedItems, showMegaMenu, setShowMegaMenu, showSelectedItems, setShowSelectedItems, orderLocation, setOrderLocation, specialRequest, setSpecialRequest, showOrderForm, setShowOrderForm}}>
         {children}
       </MyContext.Provider>
     );

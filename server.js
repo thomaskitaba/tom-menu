@@ -24,7 +24,6 @@ app.listen(5000, () => console.log("Server Running"));
 // console.log(process.env.EMAIL_USER);
 // console.log(process.env.EMAIL_PASS);
 
-
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -40,6 +39,11 @@ contactEmail.verify((error) => {
     console.log("Ready to Send");
   }
 });
+
+router.get("/", (req, res) => {
+  res.json({ message: "Welcome to our menu" });
+});
+
 router.post("/contact", (req, res) => {
   console.log('Received contact form submission:', req.body);
   const {fname, lname, phone, message, email} = req.body;
