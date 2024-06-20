@@ -748,7 +748,7 @@ padding: 10px;
   content: 'Price | ዋጋ';
 }
 .quantity-text::before {
-  content: 'Quantity | ብዛት';
+  content: 'Qty | ብዛት';
 
 }
 /* Catagory colors */

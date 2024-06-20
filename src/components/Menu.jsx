@@ -4,6 +4,7 @@ import Catagory from './Catagory';
 import MyContext from './MyContext';
 import { ArrowRepeat, CheckCircle, ArrowDown, Check, Basket, Trash, Book, BookFill } from 'react-bootstrap-icons';
 import Contact from './Contact';
+import Axios from 'axios';
 
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -18,7 +19,12 @@ const Menu = () => {
   const [glutenFreeFilter, setGlutenFreeFilter] = useState("");
   const [countryOfOriginFilter, setCountryOfOriginFilter] = useState("");
   const [selectedQuantities, setSelectedQuantities] = useState({});
-
+  const [orderButtonText, setOrderButtonText] = useState("Order");
+  const [customerType, setCustomerType] = useState("Inside");
+  const [orderStatus, setOrderStatus] = useState("Ordered");
+  const {orderLocation, setOrderLocation} = useContext(MyContext);
+  const {specialRequest, setSpecialRequest} = useContext(MyContext);
+  const {endpoint, setEndpoint} = useContext(MyContext);
   // Extract unique countries from the menu items
   const countries = [
     ...new Set(
@@ -90,7 +96,52 @@ const Menu = () => {
     // handleFilterChange();
   }
 
-    const handleFilterChange = (e) => {
+  const handleOrderClicked = async (e) => {
+
+      e.preventDefault();
+
+      setOrderButtonText('Ordering...');
+       // TODO: test Data
+       setSpecialRequest("without salt");
+       setOrderLocation("Table 14");
+
+      const formData = {
+            customerType: customerType,
+            orderLocation: orderLocation,
+            specialRequest: specialRequest
+          };
+      formData.order = selectedItems;
+      formData.totalPrice = selectedTotal;
+      // alert(JSON.stringify(formData)); Test
+
+      // alert(`${fname}, ${lname}, ${phone}, ${email}, ${message}`);
+      let response = await fetch( `${endpoint}/order`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+          body: JSON.stringify(formData),
+        });
+
+      // TODO: reset state variables after succsful ordering
+      setOrderButtonText('Order');
+      setOrderLocation('');
+      setCustomerType('Inside');
+      setSpecialRequest('empty');
+
+
+
+      // setForm(formInitialsDetail);
+      let result = await response.json();
+      if (result.code === 200) {
+        setOrderStatus({success: true, message: 'Order sent successfully'});
+      } else {
+        setOrderStatus({success: false, message: 'Something went wrong, please try again later.'});
+      }
+
+  }
+
+  const handleFilterChange = (e) => {
     const { name, value } = e.target;
     if (name === "mealTypeFilter") setMealTypeFilter(value);
     if (name === "vegetarianFilter") setVegetarianFilter(value);
@@ -225,13 +276,15 @@ const Menu = () => {
             <div> <h3>Total = {selectedTotal} birr</h3> </div>
             <div>
             {selectedItems.length > 0 ? <>
-            <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div>
+            {/* <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div> */}
+            <div><div className="order-button" onClick={(e)=> handleOrderClicked(e)}> {orderButtonText}</div> </div>
             </> : <>
             <div className="selected-items-button-2" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
             </>
             }
+
             </div>
-            <div><div className="order-button"> Order</div> </div>
+
           </div>
         </div>
       )}

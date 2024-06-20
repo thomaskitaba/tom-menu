@@ -1,9 +1,8 @@
 // import Chief from '../assets/img/panorama-logo.png';
 // import Chief2 from '../assets/img/panorama-logo.png';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
-import axios from 'axios';
-
+import MyContext from './MyContext';
 
 const Contact = () => {
 const formInitialsDetail = {
@@ -25,8 +24,8 @@ const [phone, setPhone] = useState('');
 const [message, setMessage] = useState('');
 
 // const [endpoint, setEndpoint] = useState('http://localhost:5000');
-const [endpoint, setEndpoint] = useState('https://tom-restorant.onrender.com');
-
+// const [endpoint, setEndpoint] = useState('https://tom-restorant.onrender.com');
+const {endpoint, setEndpoint} = useContext(MyContext);
 // get the width of the screen
 useEffect(() => {
   const handleResize = () => setScreenSize(window.innerWidth);
