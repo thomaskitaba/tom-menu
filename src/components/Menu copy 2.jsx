@@ -130,6 +130,7 @@ const Menu = () => {
             {/* {resetClicked ? <ArrowRepeat className="reset-component"/> : <ArrowRepeat /> } */}
             <ArrowRepeat className="reset-component"/>
             </div>
+
           <div className="catagory-button" onClick={(e) =>  handleMegaMenuButtonClicked(e)}> <a href="#mega-menu">{!showMegaMenu ? <Book className="selected-component"/> : <BookFill />} </a></div>
           <div className="selected-items-button" onClick={handleSelectButtonClicked}><a href="#selected-menu">
             {
@@ -230,11 +231,14 @@ const Menu = () => {
           <div>
             <h3>Total = {selectedTotal} birr</h3>
             {selectedItems.length > 0 ? <>
-            <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div>
+
+            <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Order Selected </div>
+            <h2 className="reset-menu">  Order </h2>
             </> : <>
             <div className="selected-items-button-2" onClick={handleSelectButtonClicked}>{selectedButtonText}</div>
             </>
             }
+
             </div>
         </div>
       )}

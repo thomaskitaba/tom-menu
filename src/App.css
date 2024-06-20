@@ -35,7 +35,8 @@
   --nav-height: 70px;
 }
 body {
-  background-color: grey;
+  background-color: white;
+  scroll-behavior: smooth;
 }
 #root {
   max-width: 1280px;
@@ -172,14 +173,29 @@ body {
   display: none;
 }
 @media (min-width: 768px) {
+.nav-menu-1 {
+  position: absolute;
+  /* border: 2px red solid; */
+display: flex;
+padding: 30px;
+gap: 20px;
+right: 20px;
+height: 70%;
+align-items: center;
+justify-content: flex-end;
+width: fit-content;
+margin-block: 10px;
+z-index: 5;
 
+}
 .nav-menu {
+  display: none;
   background-image: none;
   background-color: white;
   padding: 20px;
   position: absolute;
   /* top: 0; */
-  display: flex;
+  /* display: flex; */
   flex-direction: row;
   gap: 20px;
   font-size: 1.25rem;
@@ -192,10 +208,12 @@ body {
 
 }
 .nav-menu:hover {
-
-  border-radius: 20%;
+  top: 10%;
+  bottom: 10%;
+  right: 20%;
+  /* border-radius: 20%;
   box-shadow: none;
-  text-decoration: none;
+  text-decoration: none; */
 }
 .nav-center {
   display: none;
