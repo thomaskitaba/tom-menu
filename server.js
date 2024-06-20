@@ -6,25 +6,30 @@
 import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
+import dotenv from 'dotenv';
+dotenv.config();
+
 const router = express.Router();
 // Other ES module imports
 
-
+// require('dotenv').config();
+const password = process.env.VITE_PASSWORD;
+const email = process.env.VITE_EMAIL;
 // server used to send send emails
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", router);
 app.listen(5000, () => console.log("Server Running"));
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
+// console.log(process.env.EMAIL_USER);
+// console.log(process.env.EMAIL_PASS);
 
 
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: "thomaskitabadiary@gmail.com",
-    pass: "alyh knuk rwyy dopg"
+    user: email,
+    pass: password
   },
 });
 
@@ -74,6 +79,7 @@ router.post("/order", (req, res) => {
           <p>customer type: ${customerType}</p>
           <p>special request: ${specialRequest}</p>
           <div> Order: ${order.map((item, index) => `<h4>${index + 1} Item: ${item.name}   | Quantity:  ${item.quantity}</h4> <p>Price=> ${item.price}  Total Price: ${totalPrice}</p>`).join('   ')}</div>
+           <h3>  Total Price: ${totalPrice}</h3>
           `,
   };
   contactEmail.sendMail(mail, (error) => {
