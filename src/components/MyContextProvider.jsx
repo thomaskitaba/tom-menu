@@ -1,7 +1,9 @@
 import MyContext from './MyContext';
 import React, { useState, useEffect } from 'react';
 
+
 const MyContextProvider = ({ children }) => {
+  const holidayKey = import.meta.env.VITE_HOLIDAYKEY;
   const [showMegaMenu, setShowMegaMenu] = useState(false);
   // const [selectedItems, setSelectedItems] = useState([]);
   const [showSelectedItems, setShowSelectedItems] = useState(false);

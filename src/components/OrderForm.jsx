@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import MyContext from './MyContext';
-
+import {X} from 'react-bootstrap-icons';
 const OrderForm = (prop) => {
   const {selectedItems, setSelectedItems} = useContext(MyContext);
   const [orderButtonText, setOrderButtonText] = useState("Order");
@@ -10,6 +10,8 @@ const OrderForm = (prop) => {
   const {specialRequest, setSpecialRequest} = useContext(MyContext);
   const {endpoint, setEndpoint} = useContext(MyContext);
   const {selectedTotal, setSelectedTotal} = useContext(MyContext);
+  const {showOrderForm, setShowOrderForm} = useContext(MyContext);
+  
   const handleOrderClicked = async (e) => {
 
     e.preventDefault();
@@ -53,21 +55,27 @@ const OrderForm = (prop) => {
   }
 return (
   <>
+  {selectedItems.length > 0 &&
+  <>
  <div className="order-form">
+
+    <div className="close-order-form-container" onClick={(e)=> setShowOrderForm(false)}> <X className="close-order-form"/> </div>
     <input placeholder="Table|location" name="location" value ={orderLocation} onChange={(e) => setOrderLocation(e.target.value)} />
     <input placeholder="Special Request" name="location" value ={specialRequest} onChange={(e) => setSpecialRequest(e.target.value)} />
 
     <div className="customer-type-container">
-      <div> Customer Type</div>
-      <div>
-        <select className="order-select">
-          <option value="Inside">Inside Hotel</option>
-          <option value="Outside">Outside Hotel</option>
+      <div className="cust-type"> Cust-Type</div>
+      <div className="order-select-container">
+        <select name="customer-type" value={customerType} onChange={(e)=> setCustomerType(e.target.value)} className="order-select">
+          <option value="Inside hotel">Inside Hotel</option>
+          <option value="Outside hotel">Outside Hotel</option>
         </select>
       </div>
     </div>
     <div className="order-button" onClick={(e)=> handleOrderClicked (e)}> {orderButtonText} </div>
   </div>
+  </>
+}
   </>
   )
 }

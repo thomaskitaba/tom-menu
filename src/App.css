@@ -394,27 +394,71 @@ padding: 10px;
   border-radius: 20px;
   box-shadow: 1px 1px 2px grey;
 }
+.close-order-form-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:-10px;
+  right: -10px;
+  /* padding: 10px; */
+  border: 2px solid var(--panorama-clr-2);
+
+  border-radius: 50%;
+  background-color: white;
+  /* font-size: 1.5rem; */
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.close-order-form {
+  font-size: 1.5rem;
+}
+.close-order-form-container:hover {
+  background-color: var(--panorama-clr-2);
+  color: white;
+  box-shadow: 2px 2px 2px grey;
+
+}
+.close-order-form-container:hover .close-order-form {
+  font-size: 2rem;
+}
 .order-form input {
   padding: 8px;
   border-radius: 10px;
   width: 250px;
 }
+.order-form select {
+  width: 100%;
+}
 .order-button {
-  background-color: white;
+  background-color: var(--panorama-clr-2);
+  transition: all 0.3s;
+}
 
-}
-.order-button:hover {
-  background-color: yellow;
-}
 .customer-type-container {
+  border: 2px solid white;
+  border-radius: 20px;
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
+  padding: 5px 20px 5px 0px;
+}
+.cust-type {
+  width: 40%;
+  /* border: 2px red solid; */
+}
+.order-select-container{
+  /* border: 2px dashed red; */
+  width: auto;
 }
 .order-select {
-  width: fit-content;
-  font-weight: 100px;
+  width: 90%;
+  /* font-weight: 100px; */
+}
+.order-select-container select {
+  width: 100%;
+
 }
 /* *** FLOATING BUTTONS *** */
 .floating-button-container {
@@ -688,14 +732,14 @@ padding: 10px;
   border-radius: 20px;
   border: 2px solid var(--clr-border-green);
   box-shadow: 1px 1px 2px rgba(55, 55, 55, 0.5);
-
+ color: rgb(217, 248, 189);
   background: white(--panorama-clr-4);
 
 }
 .order-button:hover {
-  background-color: var(--panorama-clr-2);
-  color: rgb(217, 248, 189);
-  box-shadow: -1px -1px 2px grey;
+  background-color: white;
+  color: var(--panorama-clr-2);
+  box-shadow: -1px -2px 2px grey, 2px 1px 2px grey;;
 }
 .selected-footer div {
   flex: 1;
@@ -852,7 +896,7 @@ select {
   font-size: 16px; /* Font size of the select box text */
 
   /* width: 100%; */
-  max-width: 100px;
+  /* max-width: 100px; */
   margin-inline-start: 10px;
   margin-block: 4px;
   font-size: 16px; /* Font size of each option */
