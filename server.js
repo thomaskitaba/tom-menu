@@ -71,9 +71,9 @@ router.post("/contact", (req, res) => {
 });
 
 router.post("/order", (req, res) => {
-  console.log('Received Order:', req.body);
+  // console.log('Received Order:', req.body);
   const {order, customerType, orderLocation, specialRequest, totalPrice} = req.body;
-  console.log(JSON.stringify(req.body));
+  console.log(`Recived Order: ${JSON.stringify(req.body)}`);
 
   const mail = {
     from: `${orderLocation}`,

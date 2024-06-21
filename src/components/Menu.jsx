@@ -5,6 +5,7 @@ import MyContext from './MyContext';
 import { ArrowRepeat, CheckCircle, ArrowDown, Check, Basket, Trash, Book, BookFill } from 'react-bootstrap-icons';
 import Contact from './Contact';
 import Axios from 'axios';
+import OrderForm from './OrderForm';
 
 const Menu = () => {
   const qty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -13,7 +14,8 @@ const Menu = () => {
   // const [selectedItems, setSelectedItems] = useState([]);
   const { showSelectedItems, setShowSelectedItems } = useContext(MyContext);
   const [selectedButtonText, setSelectedButtonText] = useState("Selected");
-  const [selectedTotal, setSelectedTotal] = useState(0);
+
+
   const [mealTypeFilter, setMealTypeFilter] = useState("");
   const [vegetarianFilter, setVegetarianFilter] = useState("");
   const [glutenFreeFilter, setGlutenFreeFilter] = useState("");
@@ -22,6 +24,7 @@ const Menu = () => {
   const [orderButtonText, setOrderButtonText] = useState("Order");
   const [customerType, setCustomerType] = useState("Inside");
   const [orderStatus, setOrderStatus] = useState("Ordered");
+  const {selectedTotal, setSelectedTotal} = useContext(MyContext);
   const {showOrderForm, setShowOrderForm} = useContext(MyContext);
   const {selectedItems, setSelectedItems} = useContext(MyContext);
   const {orderLocation, setOrderLocation} = useContext(MyContext);
@@ -172,11 +175,7 @@ const Menu = () => {
     <>
      { showOrderForm &&
       <>
-        <div className="order-form">
-          <input placeholder="Table|location" name="location" value ={orderLocation} onChange={(e) => setOrderLocation(e.target.value)} />
-          <input placeholder="Special Request" name="location" value ={specialRequest} onChange={(e) => setSpecialRequest(e.target.value)} />
-          <div className="order-button" onClick={(e)=> handleOrderClicked (e)}> {orderButtonText} </div>
-        </div>
+        <OrderForm />
       </>
       }
       <div className="floating-button-container">

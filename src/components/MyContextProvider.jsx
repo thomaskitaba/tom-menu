@@ -9,10 +9,11 @@ const MyContextProvider = ({ children }) => {
   const [specialRequest, setSpecialRequest] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
   const [showOrderForm, setShowOrderForm] = useState(false);
+  const [selectedTotal, setSelectedTotal] = useState(0);
   // const [endpoint, setEndpoint] = useState('http://localhost:5000');
-const [endpoint, setEndpoint] = useState('https://tom-menu.onrender.com');
+  const [endpoint, setEndpoint] = useState('https://tom-menu.onrender.com');
     return (
-      <MyContext.Provider value={{ endpoint, setEndpoint, selectedItems, setSelectedItems, showMegaMenu, setShowMegaMenu, showSelectedItems, setShowSelectedItems, orderLocation, setOrderLocation, specialRequest, setSpecialRequest, showOrderForm, setShowOrderForm}}>
+      <MyContext.Provider value={{ endpoint, setEndpoint, selectedItems, setSelectedItems, showMegaMenu, setShowMegaMenu, showSelectedItems, setShowSelectedItems, orderLocation, setOrderLocation, specialRequest, setSpecialRequest, showOrderForm, setShowOrderForm, selectedTotal, setSelectedTotal}}>
         {children}
       </MyContext.Provider>
     );

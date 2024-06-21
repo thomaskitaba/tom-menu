@@ -400,10 +400,21 @@ padding: 10px;
   width: 250px;
 }
 .order-button {
-  background-color: var(--panorama-clr-2);
+  background-color: white;
+
 }
 .order-button:hover {
   background-color: yellow;
+}
+.customer-type-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.order-select {
+  width: fit-content;
+  font-weight: 100px;
 }
 /* *** FLOATING BUTTONS *** */
 .floating-button-container {
@@ -678,7 +689,7 @@ padding: 10px;
   border: 2px solid var(--clr-border-green);
   box-shadow: 1px 1px 2px rgba(55, 55, 55, 0.5);
 
-  background: var(--panorama-clr-4);
+  background: white(--panorama-clr-4);
 
 }
 .order-button:hover {
