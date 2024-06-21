@@ -6,7 +6,7 @@ const MyContextProvider = ({ children }) => {
   // const [selectedItems, setSelectedItems] = useState([]);
   const [showSelectedItems, setShowSelectedItems] = useState(false);
   const [orderLocation, setOrderLocation] = useState('');
-  const [specialRequest, setSpecialRequest] = useState('');
+  const [specialRequest, setSpecialRequest] = useState('No Special Request');
   const [selectedItems, setSelectedItems] = useState([]);
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [selectedTotal, setSelectedTotal] = useState(0);
