@@ -86,7 +86,8 @@ return (
           {/* <p> Some Picture here </p> */}
         </Col>
         <Col>
-          <h1>give us Comment for our Service</h1>
+          <h1>Give us Comment for our Service</h1>
+          <h1>ስለ አገልግሎታችን ያለዎትን አስተያየት ከስር ባለው ቅፅ ይላኩ</h1>
           <br></br>
           <form onSubmit={handelFormSubmit}>
             <Row>
