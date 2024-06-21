@@ -16,8 +16,8 @@ const OrderForm = (prop) => {
 
     setOrderButtonText('Ordering...');
      // TODO: test Data
-     setSpecialRequest("without salt");
-     setOrderLocation("Table 14");
+    //  setSpecialRequest("without salt");
+    //  setOrderLocation("Table 14");
 
     const formData = {
           customerType: customerType,
@@ -38,9 +38,9 @@ const OrderForm = (prop) => {
 
     // TODO: reset state variables after succsful ordering
     setOrderButtonText('Order');
-    setOrderLocation('');
-    setCustomerType('Inside hotel');
-    setSpecialRequest('No Special Request');
+    // setOrderLocation('');
+    // setCustomerType('Inside hotel');
+    // setSpecialRequest('No Special Request');
 
 
     let result = await response.json();
