@@ -5,21 +5,10 @@
 }
 :root {
 
-  /* --bg-clr-Breakfast: linear-gradient(to right, #fdc1c3, #f3adb2, #f77e7e);
-  --bg-clr-Lunch: linear-gradient(to right, #c9fdc1, #c5f3ad, #8ef77e);
-  --bg-clr-Dinner: linear-gradient(to right, #a27ef7, #adb5f3, #e77ef7);
-  --bg-clr-Beverages: linear-gradient(to right, #dbf77e, #ecf3ad, #e7f77e); */
-
-  /* --bg-clr-Breakfast: #dee03b;
-  --bg-clr-Lunch: #98b043;
-  --bg-clr-Dinner: #416d3d;
-  --bg-clr-Beverages: #959e40 ; */
-
   --txt-clr-dark: #416d3d;
   --text-color-dark-green: #3f6d3e;
   --bg-clr-Breakfast: #f4f5c9;
   --bg-clr-header: white;
-
 
   --panorama-clr-1: #e3e545;
   --panorama-clr-2: #3f6d3e;
@@ -553,6 +542,33 @@ padding: 10px;
 .selected-items-button::after {
   content: 'የተመረጠ';
 }
+/* **** Holiday ***** */
+.holiday-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(55, 55, 55, 0.5);
+  /* position: fixed; */
+  z-index: 3;
+  top: 0;
+  width: 100%;
+  margin-block: 20px;
+}
+.holdiay-header {
+  font-size: 1.5rem;
+  color: red;
+
+}
+.holiday-body{
+  font-size: 1.5rem;
+  color: red;
+}
+/* *** Order Form *** */
 /* *** Message of the day **** */
 .message-container {
   height: 25vh;

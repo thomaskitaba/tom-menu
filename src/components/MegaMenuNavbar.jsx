@@ -74,7 +74,6 @@ export const MegaMenuNavbar = () => {
           <div className="nav-center-0"> </div>
           <div className="nav-center-1"> </div>
           <div className="nav-center-2"> </div>
-
           <div className="nav-catagory" onClick={(e) => { setShowMegaMenu(!showMegaMenu); setShowSelectedItems(false); }}>Catagory</div>
           <div className="nav-comment">Packages</div>
         </div>

@@ -265,7 +265,7 @@ const Menu = () => {
               <div key={index}>
                 <div className="selected-items-content flex-horizontal center-flex padding-inline">
                   <h3>{item.name}</h3>
-                  <h3 className="price-text">birr {item.price.toFixed(2)}</h3>
+                  <div className="price-text"><div style={{fontSize: "0.75rem"}}>Birr </div><h3> {item.price.toFixed(2)}</h3> </div>
                   <h3 className="quantity-text" > {item.quantity}  </h3>
                   <button className="select-button" onClick={() => handleRemoveSelected(index)}>
                    <Trash />
@@ -283,7 +283,7 @@ const Menu = () => {
             ))
           )}
           <div className="selected-footer">
-            <div> <h3>Total = {selectedTotal} birr</h3> </div>
+            <div>(Birr) <h3>Total = {selectedTotal} </h3></div>
             <div>
             {selectedItems.length > 0 ? <>
             {/* <div className="refresh-total" onClick={() => handleSelectedTotal(selectedItems)}> Refresh </div> */}
