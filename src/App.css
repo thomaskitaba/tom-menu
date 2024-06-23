@@ -100,9 +100,6 @@ body {
   align-items: center;
 }
 
-.logo-container:hover {
-  /* box-shadow: 1px 2px 4px 1px var(--clr-border-green); */
-}
 
 .nav-menu {
 
@@ -365,7 +362,7 @@ padding: 10px;
   }
 }
 /* *** Order Form *** */
-.order-form {
+.order-form, .popup-message {
 
   position: fixed;
   display:flex;
@@ -381,7 +378,7 @@ padding: 10px;
   padding: 20px;
   margin: 10px;
   border-radius: 20px;
-  box-shadow: 1px 1px 2px grey;
+  box-shadow: 1px 1px 2px grey, -1px -1px 2px grey;
 }
 .close-order-form-container {
   position: absolute;
