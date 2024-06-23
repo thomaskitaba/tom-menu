@@ -4,6 +4,7 @@ import {useState, useEffect, useContext} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import MyContext from './MyContext';
 import {checkTextExist, checkEmail, checkPhone} from './UtilityFunction';
+import {X} from 'react-bootstrap-icons';
 const Contact = () => {
 const formInitialsDetail = {
   fname: '',
@@ -89,7 +90,6 @@ const handelFormSubmit = async (e) => {
   } else {
     setStatusError(false);
   }
-
 
   setButtonText('Commenting...');
   const formData = {
@@ -201,6 +201,7 @@ return (
                 <textarea placeholder="Comment" name="message" value={message} onChange={ (e) => {setMessage(e.target.value)} } />
 
                  <div className={showPopupMessage ? "popup-message" : ""}>
+                  <div className="close-order-form-container" onClick={(e) => {setShowPopupMessage(false); setStatusError(false)}}> <X /></div>
                   {(showPopupMessage && statusError) &&
                 <>
 
