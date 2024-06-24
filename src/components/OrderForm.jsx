@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import MyContext from './MyContext';
 import {checkTextExist} from './UtilityFunction';
 import {X} from 'react-bootstrap-icons';
+
 const OrderForm = (prop) => {
   const {selectedItems, setSelectedItems} = useContext(MyContext);
   const [orderButtonText, setOrderButtonText] = useState("Order");
@@ -13,20 +14,27 @@ const OrderForm = (prop) => {
   const {selectedTotal, setSelectedTotal} = useContext(MyContext);
   const {showOrderForm, setShowOrderForm} = useContext(MyContext);
 
-  const {showPopupMessage, setShowPopupMessage} = useContext(MyContext);
-  const {statusError, setStatusError} = useContext(MyContext);
+  const [showPopupMessageOrder, setShowPopupMessageOrder] = useState(false);
+  // const {statusError, setStatusError} = useContext(MyContext);
   const {status, setStatus} = useContext(MyContext);
-
+  const [orderStatusText, setOrderStatusText] = useState('');
   const handleOrderClicked = async (e) => {
 
     e.preventDefault();
+    setOrderButtonText('Ordering...');
+    // alert(orderLocation.length);
 
-    if (!checkTextExist) {
-      setStatusError(true);
-      showPopupMessage(true);
+    if (orderLocation.length == 0) {
+      setOrderButtonText('Order');
+      // setStatusError(false);
+      setOrderStatusText('Fill Location | ቦታ ሙላ');
+      // alert(orderStatusText);
+      setShowPopupMessageOrder(true);
+      // handleShowMessage();
+      // alert(orderStatusText);
       return;
     }
-    setOrderButtonText('Ordering...');
+
      // TODO: test Data
     //  setSpecialRequest("without salt");
     //  setOrderLocation("Table 14");
@@ -35,7 +43,7 @@ const OrderForm = (prop) => {
           customerType: customerType,
           orderLocation: orderLocation,
           specialRequest: specialRequest
-        };
+    };
     formData.order = selectedItems;
     formData.totalPrice = selectedTotal;
     // alert(JSON.stringify(formData)); Test
@@ -54,42 +62,34 @@ const OrderForm = (prop) => {
     // setCustomerType('Inside hotel');
     // setSpecialRequest('No Special Request');
 
-
     let result = await response.json();
     if (result.code === 200) {
-      setOrderStatus({success: true, message: 'Order sent successfully'});
-      setStatusError(false);
-      setShowPopupMessage(true);
+      setOrderStatusText("Successful | በስኬት አዘዋል");
+      setOrderButtonText('Order');
+      // alert(orderStatusText);
+      // setStatusError(false);
+      setShowPopupMessageOrder(true);
+      handleShowMessage();
     } else {
-      setOrderStatus({success: false, message: 'Something went wrong, please try again later.'});
-      setStatusError(true);
-      setShowPopupMessage(true);
+      setOrderStatusText('<div>Please Retry again or Call the waitress</div><div>እንደገና ይዘዙ ወይም አስተናጋጅዎን ይዘዙ </div>');
+      // setStatusError(true);
+      setShowPopupMessageOrder(true);
+      handleShowMessage();
+      setOrderButtonText('Order');
     }
 
-  }
 
+  }
+  const handleShowMessage =() => {
+    setTimeout(()=> {
+      setShowPopupMessageOrder(false);
+      setOrderStatusText('');
+    }, 10000);
+  }
 
 return (
   <>
-  <>
-  {/* <div className={showPopupMessage ? "popup-message" : ""}>
-    <div className="close-order-form-container" onClick={(e) => {setShowPopupMessage(false); setStatusError(false)}}> <X /></div>
-      {(showPopupMessage && statusError) &&
-        <>
-        <Col className="px-1">
-          <p className="danger">Check: {status.fname && `[${status.fname}]`} {status.lname && `[${status.lname}]`} {status.phone && `[${status.phone}]`} {status.email && `[${status.email}]`} {status.message && `[${status.message}]`}</p>
-        </Col>
-        </>
-      }
-      {(showPopupMessage && !statusError ) &&
-        <>
-          <Col className="px-1">
-            <p className="success">Comment successful</p>
-          </Col>
-        </>
-      }
-  </div> */}
-  </>
+
   {selectedItems.length > 0 &&
   <>
  <div className="order-form">
@@ -107,8 +107,12 @@ return (
         </select>
       </div>
     </div>
-    <div className="order-button" onClick={(e)=> handleOrderClicked (e)}> {orderButtonText} </div>
-    {/* <div> {!statusError && "Successful Order" || "Error"} </div> */}
+    <div className="order-button" onClick={(e)=> {handleOrderClicked (e); handleShowMessage()}}> {orderButtonText} </div>
+    {/* {  showPopupMessage && {orderStatusText} } */}
+
+    {showPopupMessageOrder &&
+    <div> {orderStatusText}</div>
+}
   </div>
   </>
 }

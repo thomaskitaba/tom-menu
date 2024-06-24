@@ -1,3 +1,7 @@
+import {useState, useContext} from 'react';
+import MyContext from "./MyContext";
+
+
 export const checkEmail = (email) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
@@ -29,3 +33,11 @@ export const checkPhone = (phone) => {
   const phoneRegex = /^(?:\+?\d{1,4}[-.\s]?)?(?:\(?\d{1,3}\)?[-.\s]?)?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
   return phoneRegex.test(phone);
 }
+
+// export const handleShowMessage = () => {
+//   const {showPopupMessageOrder, setShowPopupMessageOrder} = useContext(MyContext);
+//   setShowPopupMessageOrder(true);
+//   setTimeout(() => {
+//     setShowPopupMessageOrder(false);
+//   }, 3000);
+// }

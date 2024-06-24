@@ -145,7 +145,7 @@ const handelFormSubmit = async (e) => {
   }
 }
 const handleShowMessage = () => {
-  setShowPopupMessage(!showPopupMessage);
+  setShowPopupMessage(true);
   let timeValue = 10000;
   if (tempStatus.success === false) {
     timeValue = 10000;

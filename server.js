@@ -82,7 +82,7 @@ router.post("/order", (req, res) => {
     html: `<p>location: ${orderLocation} </p>
           <p>customer type: ${customerType}</p>
           <p>special request: ${specialRequest}</p>
-          <div> Order: ${order.map((item, index) => `<h4>${index + 1} Item: ${item.name}   | Quantity:  ${item.quantity}</h4> <p>Price=> ${item.price}  Total Price: ${totalPrice}</p>`).join('   ')}</div>
+          <div> Order: ${order.map((item, index) => `<h4>${index + 1} Item: ${item.name}   | Quantity:  ${item.quantity}</h4> <p>Price=> ${item.price} </p>`).join('   ')}</div>
            <h3>  Total Price: ${totalPrice}</h3>
           `,
   };

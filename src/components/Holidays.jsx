@@ -63,7 +63,7 @@ const Holidays = () => {
   return (
     <div className="holiday-container">
       <div className="holiday-header">
-        <h3>Today's Holidays</h3>
+        {/* <h3>Today's Holidays</h3> */}
       </div>
       <div className="holiday-body">
       {todayHolidays.length > 0 ? (
