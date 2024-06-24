@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import MyContext from './MyContext';
+import {checkTextExist} from './UtilityFunction';
 import {X} from 'react-bootstrap-icons';
 const OrderForm = (prop) => {
   const {selectedItems, setSelectedItems} = useContext(MyContext);
@@ -11,11 +12,20 @@ const OrderForm = (prop) => {
   const {endpoint, setEndpoint} = useContext(MyContext);
   const {selectedTotal, setSelectedTotal} = useContext(MyContext);
   const {showOrderForm, setShowOrderForm} = useContext(MyContext);
-  
+
+  const {showPopupMessage, setShowPopupMessage} = useContext(MyContext);
+  const {statusError, setStatusError} = useContext(MyContext);
+  const {status, setStatus} = useContext(MyContext);
+
   const handleOrderClicked = async (e) => {
 
     e.preventDefault();
 
+    if (!checkTextExist) {
+      setStatusError(true);
+      showPopupMessage(true);
+      return;
+    }
     setOrderButtonText('Ordering...');
      // TODO: test Data
     //  setSpecialRequest("without salt");
@@ -48,13 +58,38 @@ const OrderForm = (prop) => {
     let result = await response.json();
     if (result.code === 200) {
       setOrderStatus({success: true, message: 'Order sent successfully'});
+      setStatusError(false);
+      setShowPopupMessage(true);
     } else {
       setOrderStatus({success: false, message: 'Something went wrong, please try again later.'});
+      setStatusError(true);
+      setShowPopupMessage(true);
     }
 
   }
+
+
 return (
   <>
+  <>
+  {/* <div className={showPopupMessage ? "popup-message" : ""}>
+    <div className="close-order-form-container" onClick={(e) => {setShowPopupMessage(false); setStatusError(false)}}> <X /></div>
+      {(showPopupMessage && statusError) &&
+        <>
+        <Col className="px-1">
+          <p className="danger">Check: {status.fname && `[${status.fname}]`} {status.lname && `[${status.lname}]`} {status.phone && `[${status.phone}]`} {status.email && `[${status.email}]`} {status.message && `[${status.message}]`}</p>
+        </Col>
+        </>
+      }
+      {(showPopupMessage && !statusError ) &&
+        <>
+          <Col className="px-1">
+            <p className="success">Comment successful</p>
+          </Col>
+        </>
+      }
+  </div> */}
+  </>
   {selectedItems.length > 0 &&
   <>
  <div className="order-form">
@@ -73,6 +108,7 @@ return (
       </div>
     </div>
     <div className="order-button" onClick={(e)=> handleOrderClicked (e)}> {orderButtonText} </div>
+    {/* <div> {!statusError && "Successful Order" || "Error"} </div> */}
   </div>
   </>
 }

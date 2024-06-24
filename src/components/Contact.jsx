@@ -203,21 +203,21 @@ return (
                  <div className={showPopupMessage ? "popup-message" : ""}>
                   <div className="close-order-form-container" onClick={(e) => {setShowPopupMessage(false); setStatusError(false)}}> <X /></div>
                   {(showPopupMessage && statusError) &&
-                <>
+                    <>
 
-                <Col className="px-1">
-                  <p className="danger">Check: {status.fname && `[${status.fname}]`} {status.lname && `[${status.lname}]`} {status.phone && `[${status.phone}]`} {status.email && `[${status.email}]`} {status.message && `[${status.message}]`}</p>
-
-
-                </Col>
-              </> }
-              {(showPopupMessage && !statusError ) && <>
-                <Col className="px-1">
-                  <p className="success">Comment successful</p>
-                </Col>
-              </>}
-
-              </div>
+                    <Col className="px-1">
+                      <p className="danger">Check: {status.fname && `[${status.fname}]`} {status.lname && `[${status.lname}]`} {status.phone && `[${status.phone}]`} {status.email && `[${status.email}]`} {status.message && `[${status.message}]`}</p>
+                    </Col>
+                    </>
+                  }
+                  {(showPopupMessage && !statusError ) &&
+                    <>
+                      <Col className="px-1">
+                        <p className="success">Comment successful</p>
+                      </Col>
+                    </>
+                  }
+                  </div>
               </Col>
             </Row>
             {/* <button onClick={(e)=> alert(status.message)}> test button </button> */}
