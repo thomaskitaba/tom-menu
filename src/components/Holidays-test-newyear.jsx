@@ -4,7 +4,7 @@ import { gapi } from 'gapi-script';
 
 const Holidays = () => {
   const [holidays, setHolidays] = useState([]);
-  const [todayHolidays, setTodayHolidays] = useState([]);
+  const [testHolidays, setTestHolidays] = useState([]);
   const holidayCalendars = [
     'en.usa#holiday@group.v.calendar.google.com',
     'en.et#holiday@group.v.calendar.google.com',
@@ -30,16 +30,17 @@ const Holidays = () => {
   }, []);
 
   const fetchAllHolidays = async () => {
-    const today = new Date();
-    const todayString = today.toISOString().split('T')[0];
+    // Change this date to a known holiday date for testing
+    const testDate = new Date('2023-01-01');
+    const testDateString = testDate.toISOString().split('T')[0];
 
     let allHolidays = [];
     for (let calendarId of holidayCalendars) {
       try {
         const response = await gapi.client.calendar.events.list({
           calendarId: calendarId,
-          timeMin: today.toISOString(),
-          timeMax: new Date(today.setDate(today.getDate() + 1)).toISOString(),
+          timeMin: testDate.toISOString(),
+          timeMax: new Date(testDate.setDate(testDate.getDate() + 1)).toISOString(),
           singleEvents: true,
           orderBy: 'startTime',
         });
@@ -49,31 +50,32 @@ const Holidays = () => {
       }
     }
     setHolidays(allHolidays);
-    filterTodayHolidays(allHolidays, todayString);
+    filterTestHolidays(allHolidays, testDateString);
   };
 
-  const filterTodayHolidays = (events, todayString) => {
-    const todayEvents = events.filter(event =>
-      event.start.date === todayString ||
-      event.start.dateTime?.startsWith(todayString)
+  const filterTestHolidays = (events, testDateString) => {
+    const testDateEvents = events.filter(event =>
+      event.start.date === testDateString ||
+      event.start.dateTime?.startsWith(testDateString)
     );
-    setTodayHolidays(todayEvents);
+    setTestHolidays(testDateEvents);
   };
 
   return (
     <div className="holiday-container">
       <div className="holiday-header">
-        <h3>Today's Holidays</h3>
+        <h3>Todays Message</h3>
       </div>
       <div className="holiday-body">
-      {todayHolidays.length > 0 ? (
+      {testHolidays.length > 0 ? (
         <ul>
-          {todayHolidays.map((holiday, index) => (
+          {/* <h3>Holidays on Test Date</h3> */}
+          {testHolidays.map((holiday, index) => (
             <li key={index}>{holiday.summary}</li>
           ))}
         </ul>
       ) : (
-        <p>No holidays today.</p>
+        <p>We have some special packages for you!!!!</p>
       )}
       </div>
     </div>
