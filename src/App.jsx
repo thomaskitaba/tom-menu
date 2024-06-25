@@ -22,7 +22,7 @@ function App() {
           <Holidays />
           {/* <Messageoftheday /> */}
           <Menu />
-          <Welcome />
+          {/* <Welcome /> */}
         </MyContextProvider>
       </div>
     </>

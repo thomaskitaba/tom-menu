@@ -7,7 +7,7 @@
 
   --txt-clr-dark: #416d3d;
   --text-color-dark-green: #3f6d3e;
-  --bg-clr-Breakfast: #f4f5c9;
+
   --bg-clr-header: white;
 
   --panorama-clr-1: #e3e545;
@@ -15,10 +15,12 @@
   --panorama-clr-3: #959e40 ;
   --panorama-clr-4: #b7f8b7;
 
-  --bg-clr-Breakfast: #f6f7df;
-  --bg-clr-Lunch: #c3c5bc;
+  --bg-clr-Merkeb-Restorant: #f4f5c9;
+  --bg-clr-Breakfast: #c3c5bc;
+  --bg-clr-Lunch:  #f6f7df;
   --bg-clr-Dinner: #b6cdb3;
-  --bg-clr-Beverages: #c6c8bc ;
+  /* --bg-clr-Beverages: #c6c8bc ; */
+  --bg-clr-Beverages: #f4f5c9;
   --clr-border-green: rgb(120, 242, 142);
 
   --nav-height: 70px;
@@ -855,10 +857,10 @@ padding: 10px;
   /* cursor: pointer; */
 }
 
-.foods, .Beverages, .packages, .drinks, .Breakfast, .Lunch, .Dinner, .Beverages, .Default-Bg{
+.Merkeb-Restorant, .foods, .Beverages, .packages, .drinks, .Breakfast, .Lunch, .Dinner, .Beverages, .Default-Bg{
   box-shadow: 1px 1px 2px grey, -1px -1px 2px grey;
 }
-.foods:hover, .Beverages:hover, .packages:hover, .drinks:hover, .Breakfast:hover, .Lunch:hover, .Dinner:hover, .Beverages:hover, .Default-Bg:hover {
+.Merkeb-Restorant:hover, .foods:hover, .Beverages:hover, .packages:hover, .drinks:hover, .Breakfast:hover, .Lunch:hover, .Dinner:hover, .Beverages:hover, .Default-Bg:hover {
   box-shadow: 1px 2px 4px 1px rgba(55, 55, 55, 0.5);
 }
 
@@ -878,6 +880,10 @@ padding: 10px;
 .drinks {
   border: 4px solid  var(--bg-clr-Beverages);
   background: var(--bg-clr-Beverages)
+}
+.Merkeb-Restorant {
+  border: 4px solid var(--bg-clr-Merkeb-Restorant);
+  background: var(--bg-clr-Merkeb-Restorant);
 }
 .Breakfast {
   border: 4px solid var(--bg-clr-Breakfast);

@@ -78,7 +78,6 @@ const OrderForm = (prop) => {
       setOrderButtonText('Order');
     }
 
-
   }
   const handleShowMessage =() => {
     setTimeout(()=> {

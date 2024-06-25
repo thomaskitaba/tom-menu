@@ -1,5 +1,47 @@
  const Menujson = {
   "hotelMenu": {
+    "Merkeb-Restorant": [
+      {
+        "name": "Pancakes",
+        "description": "Fluffy pancakes served with maple syrup and butter.",
+        "price": 7.99,
+        "vegetarian": true,
+        "glutenFree": false,
+        "countryOfOrigin": "USA",
+        "className": "Breakfast",
+        "Quantity": 1
+      },
+      {
+        "name": "Omelette",
+        "description": "Three-egg omelette with your choice of fillings: cheese, ham, mushrooms, and peppers.",
+        "price": 8.99,
+        "vegetarian": false,
+        "glutenFree": true,
+        "countryOfOrigin": "France",
+        "className": "Breakfast",
+        "Quantity": 1
+      },
+      {
+        "name": "Chechebsa vegiterian",
+        "description": "Made from wheat floar ",
+        "price": 5.99,
+        "vegetarian": true,
+        "glutenFree": true,
+        "countryOfOrigin": "Ethiopia",
+        "className": "Breakfast",
+        "Quantity": 1
+      },
+      {
+        "name": "Fruit Salad",
+        "description": "Fresh seasonal fruits served with a honey yogurt dip.",
+        "price": 6.49,
+        "vegetarian": true,
+        "glutenFree": true,
+        "countryOfOrigin": "Global",
+        "className": "Breakfast",
+        "Quantity": 1
+      }
+    ],
     "Breakfast": [
       {
         "name": "Pancakes",
@@ -42,48 +84,7 @@
         "Quantity": 1
       }
     ],
-    "Merkeb Restorant": [
-      {
-        "name": "Pancakes",
-        "description": "Fluffy pancakes served with maple syrup and butter.",
-        "price": 7.99,
-        "vegetarian": true,
-        "glutenFree": false,
-        "countryOfOrigin": "USA",
-        "className": "Breakfast",
-        "Quantity": 1
-      },
-      {
-        "name": "Omelette",
-        "description": "Three-egg omelette with your choice of fillings: cheese, ham, mushrooms, and peppers.",
-        "price": 8.99,
-        "vegetarian": false,
-        "glutenFree": true,
-        "countryOfOrigin": "France",
-        "className": "Breakfast",
-        "Quantity": 1
-      },
-      {
-        "name": "Chechebsa vegiterian",
-        "description": "Made from wheat floar ",
-        "price": 5.99,
-        "vegetarian": true,
-        "glutenFree": true,
-        "countryOfOrigin": "Ethiopia",
-        "className": "Breakfast",
-        "Quantity": 1
-      },
-      {
-        "name": "Fruit Salad",
-        "description": "Fresh seasonal fruits served with a honey yogurt dip.",
-        "price": 6.49,
-        "vegetarian": true,
-        "glutenFree": true,
-        "countryOfOrigin": "Global",
-        "className": "Breakfast",
-        "Quantity": 1
-      }
-    ],
+
     "Lunch": [
       {
         "name": "Caesar Salad",
