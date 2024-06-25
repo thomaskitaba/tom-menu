@@ -201,7 +201,7 @@ return (
                 <textarea placeholder="Comment" name="message" value={message} onChange={ (e) => {setMessage(e.target.value)} } />
 
                  <div className={showPopupMessage ? "popup-message" : ""}>
-                  <div className="close-order-form-container" onClick={(e) => {setShowPopupMessage(false); setStatusError(false)}}> <X /></div>
+                  <div className="close-order-form-container" onClick={(e) => {setShowPopupMessage(false); setStatusError(false)}}> {showPopupMessage && <X />}</div>
                   {(showPopupMessage && statusError) &&
                     <>
 

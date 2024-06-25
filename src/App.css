@@ -40,35 +40,72 @@ body {
 /* ***Hero Page *** */
 .hero-page {
   display: flex;
+  flex-direction: column;
   position: relative;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 1rem;
-  background-image: url(./assets/logo/panorama-logo.png);
-  background-size: contain;
+  /* padding: 1rem; */
+  background-image: url(./assets/img/panoramaaddis.jpg);
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 25vh;
+  height: 50vh;
   width: 100%;
+  margin-top: 10px;
   /* border-radius: 20px; */
   /* box-shadow: 0 0 8px rgba(55, 55, 55, 0.5); */
 }
+.social-media {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  top: 0%;
+  left: 32px;
+
+}
+.social-media div {
+  cursor: pointer;
+}
+.social-media-background {
+  background-color:white;
+  width: 100%;
+  margin: 5px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 4px whitesmoke, -2px -2px 2px white, -2px 2px 4px whitesmoke, 2px -2px 2px white;
+}
+.social-media-background:hover {
+  background-color: var(--panorama-clr-1);
+  box-shadow: 2px 2px 4px var(--panorama-clr-1), -2px -2px 2px var(--panorama-clr-1), -2px 2px 4px var(--panorama-clr-1), 2px -2px 2px var(--panorama-clr-1);
+}
+
 .hero-page-text {
-  /* display: flex;
+  display: flex;
   position: absolute;
   flex-direction: column;
-  justify-content: center; */
+  justify-content: center;
   margin: 0 auto;
   align-items: center;
   font-size: 1.5rem;
-  gap: 10px;
-  top: 0%;
+  gap: 20px;
+  top: -40px;
   color: var(--text-color-dark-green);
   padding: 1rem;
   width: 100%;
 
 }
+a {
+  text-decoration: none; /* Remove underline */
+}
+
+a div {
+  background-image: url(./assets/logo/panorama-logo.png);
+  background-position: center;
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto;
+  display: block; /* Ensure there are no extra spaces around the image */
+}
+
 @media (min-width: 767px) {
   .hero-page-text {
     font-size: 2rem;
