@@ -1,0 +1,4 @@
+message="$1"       # Store the first argument passed to the script in the variable 'message'
+git add .         # Stage all changes
+git commit -m "$message"  # Commit with the message
+git push          # Push to the remote repository
