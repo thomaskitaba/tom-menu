@@ -20,7 +20,6 @@ function App() {
         <MyContextProvider>
           <MegaMenuNavbar />
           <Heropage />
-          
           <Messageoftheday />
           <Menu />
           <Package />

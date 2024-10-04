@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import HolidaysEthiopian from './HolidaysEthiopian';
-
+import HolidaysInternational from './HolidaysInternational';
 const HolidaysOfTheDay = () => {
   const [holidays, setHolidays] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const holidayKey = import.meta.env.VITE_HOLIDAYKEY;
-
+   // List of countries to query (this can be expanded or customized)
+   
   useEffect(() => {
     const fetchHolidays = async (retryCount = 0) => {
       try {
@@ -45,6 +46,7 @@ const HolidaysOfTheDay = () => {
         <h3>Ethiopian Holiday</h3>
         <div> <HolidaysEthiopian /> </div>
         <h3>Other Holidays</h3>
+        
         <ul>
           {holidays.map((holiday, index) => (
             <li key={index}>{holiday.name} - {holiday.country}</li>
