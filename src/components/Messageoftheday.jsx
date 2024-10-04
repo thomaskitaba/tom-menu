@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import HolidaysEthiopian from './HolidaysEthiopian';
 
 const HolidaysOfTheDay = () => {
   const [holidays, setHolidays] = useState([]);
@@ -41,7 +42,9 @@ const HolidaysOfTheDay = () => {
     <a href="#packages"><div className="package-button">Check out our Packages</div></a>
       {holidays.length > 0 ? (
         <>
-        <h3>Holidays of the Day</h3>
+        <h3>Ethiopian Holiday</h3>
+        <div> <HolidaysEthiopian /> </div>
+        <h3>Other Holidays</h3>
         <ul>
           {holidays.map((holiday, index) => (
             <li key={index}>{holiday.name} - {holiday.country}</li>
